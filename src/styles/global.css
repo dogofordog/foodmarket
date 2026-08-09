@@ -1,0 +1,76 @@
+:root {
+  --color-primary: #4FA1A2;
+  --color-primary-dark: #243122;
+  --color-surface-mint: #E8F5F3;
+  --color-border: #E6E6E6;
+  --color-bg: #F4F1EC;
+  --color-text: #243122;
+  --color-text-muted: #6b6b5e;
+  --color-white: #ffffff;
+
+  --font-base: 'Inter Variable', 'Inter', system-ui, sans-serif;
+  --font-heading: 'Montserrat', system-ui, sans-serif;
+
+  --font-size-base: 1rem;      /* 16px */
+  --font-size-min: 0.875rem;   /* 14px — минимальный размер текста на сайте */
+
+  --radius-md: 12px;
+  --radius-lg: 16px;
+  --container-width: 1200px;
+}
+
+body {
+  font-size: var(--font-size-base);
+}
+*, *::before, *::after {
+  box-sizing: border-box;
+}
+
+*:not(dialog) {
+  margin: 0;
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  html {
+    interpolate-size: allow-keywords;
+  }
+}
+
+body {
+  line-height: 1.5;
+  -webkit-font-smoothing: antialiased;
+  font-family: var(--font-base);
+  color: var(--color-text);
+  background: var(--color-bg);
+}
+
+img, picture, video, canvas, svg {
+  display: block;
+  max-width: 100%;
+}
+
+input, button, textarea, select {
+  font: inherit;
+}
+
+p, h1, h2, h3, h4, h5, h6 {
+  overflow-wrap: break-word;
+}
+
+p {
+  text-wrap: pretty;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  text-wrap: balance;
+}
+
+#root, #__next {
+  isolation: isolate;
+}
+
+.container {
+  max-width: var(--container-width);
+  margin-inline: auto;
+  padding-inline: 1rem;
+}
