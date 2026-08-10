@@ -1,0 +1,18 @@
+# Это корневой файл (не искать выше в директориях)
+root = true
+
+# Применять ко ВСЕМ файлам (*)
+[*]
+charset = utf-8                    # Кодировка UTF-8
+end_of_line = lf                   # Концы строк как в Linux/Mac (не CRLF как в Windows)
+indent_size = 2                    # Отступ = 2 пробела
+indent_style = space               # Использовать пробелы (не табы)
+insert_final_newline = true        # Добавить пустую строку в конце файла
+max_line_length = 120              # Максимум 120 символов в строке
+tab_width = 2                      # Ширина таба = 2 пробела
+trim_trailing_whitespace = true    # Удалять лишние пробелы в конце строк
+
+# Для Makefile — особые правила (там используются табы)
+[Makefile]
+indent_style = tab                 # Использовать табы
+insert_final_newline = true        # Пустая строка в конце
