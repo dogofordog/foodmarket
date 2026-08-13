@@ -1,28 +1,35 @@
 ---
-
+import Vegan from './icons/vegan.astro';
+import Order from './icons/order.astro';
+import Control from './icons/control.astro';
 ---
 <section class="hero-section container">
 
   <div class="portrait-area-container">
     <button class="chef-profile-trigger" id="openChefModal" aria-label="Подробнее о шефе">
       <div class="portrait-wrap">
-        <img
-          class="chef-portrait"
-          src="/images/maxim-placeholder.jpg"
-          alt="Максим Катасонов, шеф-повар и основатель"
-          width="600"
-          height="600"
-        />
-        <div class="credentials-badge">
-          <p class="credentials-badge__title">12+ лет</p>
-          <p class="credentials-badge__subtitle">опыта в премиум сегменте</p>
-        </div>
-      </div>
+  <picture>
+    <!-- экран ≥900px: файлы крупнее; 2x — для retina -->
+    <source
+      media="(min-width: 900px)"
+      srcset="/images/chef-800.jpg 1x, /images/chef-portrait.jpg 2x"
+    />
+    <!-- мобильные по умолчанию -->
+    <img
+      class="chef-portrait"
+      src="/images/chef-480.jpg"
+      srcset="/images/chef-480.jpg 1x, /images/chef-800.jpg 2x"
+      alt="Максим Катасонов, шеф-повар и основатель"
+      width="1074"
+      height="1020"
+    />
+  </picture>
 
-      <div class="chef-identity-group">
-        <p class="chef-name">Максим Катасонов</p>
-        <p class="chef-role">шеф-повар и основатель</p>
-      </div>
+  <div class="credentials-badge">
+    <p class="credentials-badge__title">12+ лет</p>
+    <p class="credentials-badge__subtitle">опыта в премиум сегменте</p>
+  </div>
+</div>
     </button>
   </div>
 
@@ -43,19 +50,19 @@
     </ul>
 
     <ul class="feature-icons-row">
-      <li class="feature-item">
-        <img class="feature-item__icon" src="/images/frame/Frame.png" alt="" width="48" height="48" />
-        <span>Веган-меню</span>
-      </li>
-      <li class="feature-item">
-        <img class="feature-item__icon" src="/images/frame/Frame2.png" alt="" width="48" height="48" />
-        <span>Разово или подписка</span>
-      </li>
-      <li class="feature-item">
-        <img class="feature-item__icon" src="/images/frame/Frame3.png" alt="" width="48" height="48" />
-        <span>Личный контроль</span>
-      </li>
-    </ul>
+  <li class="feature-item">
+    <Vegan />
+    <span>Веган-меню</span>
+  </li>
+  <li class="feature-item">
+    <Order />
+    <span>Разово или подписка</span>
+  </li>
+  <li class="feature-item">
+    <Control />
+    <span>Личный контроль</span>
+  </li>
+</ul>
 
     <div class="hero-cta-buttons">
       <a href="#chef-menu" class="btn-view-menu">Смотреть меню шефа</a>
@@ -69,13 +76,13 @@
     <button class="chef-modal-close" id="closeChefModal" aria-label="Закрыть">&times;</button>
     
     <div class="chef-modal-header">
-      <img
-        class="chef-modal-photo"
-        src="/images/maxim-placeholder.jpg"
-        alt="Максим Катасонов"
-        width="200"
-        height="200"
-      />
+     <img
+  class="chef-modal-photo"
+  src="/images/chef-480.jpg"
+  alt="Максим Катасонов"
+  width="200"
+  height="200"
+/>
       <h2 class="chef-modal-name">Максим Катасонов</h2>
       <p class="chef-modal-role">Шеф-повар и основатель</p>
     </div>
@@ -156,13 +163,13 @@
     width: 100%;
   }
 
-  .chef-portrait {
-    width: 100%;
-    height: auto;
-    display: block;
-    object-fit: cover;
-    border-radius: var(--radius-lg);
-  }
+.chef-portrait {
+  width: 100%;
+  aspect-ratio: 3 / 4;   /* держим портретный блок, как в дизайне */
+  object-fit: cover;     /* квадратное фото аккуратно кроется в портрет */
+  border-radius: var(--radius-lg);  /* углы скругляет браузер */
+  display: block;
+}
 
   .credentials-badge {
     position: absolute;
@@ -181,7 +188,7 @@
   .credentials-badge__title {
     font-weight: 700;
     font-size: 1.375rem;
-    color: var(--color-white);
+    color: var(--color-white)
   }
 
   .credentials-badge__subtitle {

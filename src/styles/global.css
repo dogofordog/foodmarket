@@ -11,8 +11,8 @@
   --font-base: 'Inter Variable', 'Inter', system-ui, sans-serif;
   --font-heading: 'Montserrat', system-ui, sans-serif;
 
-  --font-size-base: 1rem;      /* 16px */
-  --font-size-min: 0.875rem;   /* 14px — минимальный размер текста на сайте */
+  --font-size-base: 1rem;   
+  --font-size-min: 0.875rem;  
 
   --radius-md: 12px;
   --radius-lg: 16px;
