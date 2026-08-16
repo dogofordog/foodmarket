@@ -110,19 +110,46 @@ import Control from './icons/control.astro';
     const openBtn = document.getElementById('openChefModal');
     const closeBtn = document.getElementById('closeChefModal');
 
-    const setOpen = (open) => {
-      modal.classList.toggle(activeClass, open);
-      modal.setAttribute('aria-hidden', String(!open));
-      document.body.style.overflow = open ? 'hidden' : '';
+    if (!openBtn || !modal || !closeBtn) {
+      return;
+    }
+
+    let lastFocusedElement = null;
+
+    const openModal = (e) => {
+      e.preventDefault();
+      lastFocusedElement = document.activeElement;
+      modal.classList.add(activeClass);
+      modal.setAttribute('aria-hidden', 'false');
+      document.body.style.overflow = 'hidden';
+      closeBtn.focus();
     };
 
-    if (openBtn && modal && closeBtn) {
-      openBtn.addEventListener('click', (e) => { e.preventDefault(); setOpen(true); });
-      closeBtn.addEventListener('click', () => setOpen(false));
-      modal.addEventListener('click', (e) => { if (e.target === modal) setOpen(false); });
-      document.addEventListener('keydown', (e) => {
-        if (e.key === 'Escape' && modal.classList.contains(activeClass)) setOpen(false);
-      });
-    }
+    const closeModal = () => {
+      modal.classList.remove(activeClass);
+      modal.setAttribute('aria-hidden', 'true');
+      document.body.style.overflow = '';
+      if (lastFocusedElement) {
+        lastFocusedElement.focus();
+        lastFocusedElement = null;
+      }
+    };
+
+    const handleOverlayClick = (e) => {
+      if (e.target === modal) {
+        closeModal();
+      }
+    };
+
+    const handleKeyDown = (e) => {
+      if (e.key === 'Escape' && modal.classList.contains(activeClass)) {
+        closeModal();
+      }
+    };
+
+    openBtn.addEventListener('click', openModal);
+    closeBtn.addEventListener('click', closeModal);
+    modal.addEventListener('click', handleOverlayClick);
+    document.addEventListener('keydown', handleKeyDown);
   });
 </script>
