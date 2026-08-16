@@ -1,151 +1,31 @@
 ---
-
+import styles from './header.module.css';
 ---
 
-<header class="header">
-  <div class="container header__inner">
-    <a href="/" class="header__logo">
+<header class={styles.header}>
+  <div class={`container ${styles.inner}`}>
+    <a href="/" class={styles.logo}>
       <img
-        class="header__logo-icon"
+        class={styles.logoIcon}
         src="/images/logo-icon.svg"
         alt="Катасонов"
         width="32"
         height="32"
       />
-      <span class="header__logo-text">
-        <span class="header__logo-title">КАТАСОНОВ</span>
-        <span class="header__logo-subtitle">кухня шефа</span>
+      <span class={styles.logoText}>
+        <span class={styles.logoTitle}>КАТАСОНОВ</span>
+        <span class={styles.logoSubtitle}>кухня шефа</span>
       </span>
     </a>
 
-    <div class="header__actions">
-      <button class="header__menu-button" type="button">Меню</button>
+    <div class={styles.actions}>
+      <button class={styles.menuButton} type="button">Меню</button>
 
-      <button class="header__hamburger" aria-label="Открыть меню" type="button">
-        <span></span>
-        <span></span>
-        <span></span>
+      <button class={styles.burger} aria-label="Открыть меню" type="button">
+        <span class={`${styles.burgerLine} ${styles.burgerLineTop}`}></span>
+        <span class={styles.burgerLine}></span>
+        <span class={`${styles.burgerLine} ${styles.burgerLineBottom}`}></span>
       </button>
     </div>
   </div>
 </header>
-
-<style>
-  .header {
-    position: sticky;
-    top: 0;
-    z-index: 100;
-    background: var(--color-white);
-    border-bottom: 1px solid var(--color-border);
-  }
-
-  .header__inner {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    padding-block: 0.85rem;
-  }
-
-  .header__logo {
-    display: flex;
-    align-items: center;
-    gap: 0.6rem;
-    text-decoration: none;
-    color: var(--color-text);
-    min-width: 0;
-  }
-
-  .header__logo-icon {
-    width: 32px;
-    height: 32px;
-    border-radius: 8px;
-    object-fit: cover;
-    flex-shrink: 0;
-  }
-
-  .header__logo-text {
-    display: flex;
-    flex-direction: column;
-    line-height: 1.15;
-    min-width: 0;
-  }
-
-  .header__logo-title {
-    font-family: var(--font-heading);
-    font-size: 1.05rem;
-    font-weight: 700;
-    letter-spacing: 0.04em;
-    color: var(--color-text);
-    white-space: nowrap;
-  }
-
-  .header__logo-subtitle {
-    font-size: 0.65rem;
-    color: var(--color-primary);
-    font-style: italic;
-    white-space: nowrap;
-  }
-
-  .header__actions {
-    display: flex;
-    align-items: center;
-    gap: 0.6rem;
-    flex-shrink: 0;
-  }
-
-  .header__menu-button {
-    border: 1.5px solid var(--color-text);
-    background: var(--color-white);
-    border-radius: 999px;
-    padding: 0.45rem 1.2rem;
-    font-size: 0.85rem;
-    font-weight: 500;
-    color: var(--color-text);
-    cursor: pointer;
-    white-space: nowrap;
-    transition: background 0.15s ease;
-  }
-
-  .header__menu-button:hover {
-    background: var(--color-surface-mint);
-  }
-
-  .header__hamburger {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    gap: 6px;
-    width: 40px;
-    height: 40px;
-    background: none;
-    border: none;
-    cursor: pointer;
-    padding: 0;
-    flex-shrink: 0;
-  }
-
-  .header__hamburger span {
-    width: 24px;
-    height: 2px;
-    background: var(--color-text);
-    border-radius: 1px;
-    transition:
-      transform 0.2s ease,
-      opacity 0.2s ease;
-  }
-
-  /* Анимация бургера при наведении или будущем добавлении класса .active */
-  .header__hamburger:hover span:nth-child(1) {
-    transform: translateY(2px);
-  }
-  .header__hamburger:hover span:nth-child(3) {
-    transform: translateY(-2px);
-  }
-
-  @media (min-width: 768px) {
-    .header__inner {
-      padding-block: 1rem;
-    }
-  }
-</style>

@@ -1,4 +1,6 @@
 ---
+import styles from './guarantee-strip.module.css';
+
 interface Props {
   text?: string;
 }
@@ -7,28 +9,8 @@ const {
   text = 'Гарантия вкуса — первая замена блюда всегда бесплатно',
 } = Astro.props;
 ---
-<div class="guarantee-strip container">
-  <span class="guarantee-strip__icon">⭐</span>
-  <p class="guarantee-strip__text">{text}</p>
+
+<div class={`container ${styles.strip}`}>
+  <span class={styles.icon}>⭐</span>
+  <p class={styles.text}>{text}</p>
 </div>
-
-<style>
-  .guarantee-strip {
-    display: flex;
-    align-items: flex-start;
-    gap: 0.5rem;
-    background: #F9E2D2;
-    padding: 0.625rem 1rem; /* 10px / 16px — из Figma */
-    font-size: 0.9rem;
-    color: var(--color-text);
-  }
-
-  .guarantee-strip__icon {
-    flex-shrink: 0;
-    line-height: 1.4;
-  }
-
-  .guarantee-strip__text {
-    line-height: 1.4;
-  }
-</style>
