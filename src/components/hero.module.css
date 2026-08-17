@@ -24,12 +24,10 @@
 .trigger:hover {
   transform: scale(1.02);
 }
-.trigger:focus {
-  outline: 2px solid var(--color-primary);
-  outline-offset: 4px;
-  border-radius: var(--radius-lg);
+.trigger:focus,
+.trigger:focus-visible {
+  outline: none;
 }
-
 .portraitWrap {
   position: relative;
   width: 100%;
@@ -190,6 +188,34 @@
   opacity: 1;
   visibility: visible;
 }
+.overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.7);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+  opacity: 0;
+  visibility: hidden;
+  transition:
+    opacity 0.3s ease,
+    visibility 0.3s ease;
+  padding: 1rem;
+  
+
+  --content-y: 20px; 
+}
+
+.overlay.active {
+  opacity: 1;
+  visibility: visible;
+  --content-y: 0; 
+}
+
 .content {
   background: #ffffff;
   border-radius: var(--radius-lg);
@@ -198,11 +224,8 @@
   max-height: 90vh;
   overflow-y: auto;
   position: relative;
-  transform: translateY(20px);
+  transform: translateY(var(--content-y)); 
   transition: transform 0.3s ease;
-}
-.overlay.active .content {
-  transform: translateY(0);
 }
 .close {
   position: absolute;
