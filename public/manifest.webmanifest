@@ -1,0 +1,27 @@
+{
+  "name": "Катасонов — кухня шефа",
+  "short_name": "Катасонов",
+  "description": "Авторские обеды и подписка на питание от Максима Катасонова",
+  "icons": [
+    {
+      "src": "/icon-192.png",
+      "type": "image/png",
+      "sizes": "192x192"
+    },
+    {
+      "src": "/icon-mask.png",
+      "type": "image/png",
+      "sizes": "512x512",
+      "purpose": "maskable"
+    },
+    {
+      "src": "/icon-512.png",
+      "type": "image/png",
+      "sizes": "512x512"
+    }
+  ],
+  "theme_color": "#243122",
+  "background_color": "#F4F1EC",
+  "display": "standalone",
+  "start_url": "/"
+}
