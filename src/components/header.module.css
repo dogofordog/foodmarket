@@ -22,7 +22,7 @@
   min-width: 0;
 }
 
-.logoIcon {
+.logo-icon {
   width: 32px;
   height: 32px;
   border-radius: 8px;
@@ -30,14 +30,14 @@
   flex-shrink: 0;
 }
 
-.logoText {
+.logo-text {
   display: flex;
   flex-direction: column;
   line-height: 1.15;
   min-width: 0;
 }
 
-.logoTitle {
+.logo-title {
   font-family: var(--font-heading);
   font-size: 1.05rem;
   font-weight: 700;
@@ -46,7 +46,7 @@
   white-space: nowrap;
 }
 
-.logoSubtitle {
+.logo-subtitle {
   font-size: 0.65rem;
   color: var(--color-primary);
   font-style: italic;
@@ -60,7 +60,7 @@
   flex-shrink: 0;
 }
 
-.menuButton {
+.menu-button {
   border: 1.5px solid var(--color-text);
   background: var(--color-white);
   border-radius: 999px;
@@ -73,7 +73,7 @@
   transition: background 0.15s ease;
 }
 
-.menuButton:hover {
+.menu-button:hover {
   background: var(--color-surface-mint);
 }
 
@@ -90,22 +90,6 @@
   cursor: pointer;
   padding: 0;
   flex-shrink: 0;
-}
-
-.burger {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  gap: 6px;
-  width: 40px;
-  height: 40px;
-  background: none;
-  border: none;
-  cursor: pointer;
-  padding: 0;
-  flex-shrink: 0;
-  
   --line-top-y: 0;
   --line-bottom-y: 0;
 }
@@ -115,7 +99,7 @@
   --line-bottom-y: -2px;
 }
 
-.burgerLine {
+.burger-line {
   width: 24px;
   height: 2px;
   background: var(--color-text);
@@ -124,11 +108,12 @@
     transform 0.2s ease,
     opacity 0.2s ease;
 }
-.burgerLineTop {
+
+.burger-line-top {
   transform: translateY(var(--line-top-y));
 }
 
-.burgerLineBottom {
+.burger-line-bottom {
   transform: translateY(var(--line-bottom-y));
 }
 

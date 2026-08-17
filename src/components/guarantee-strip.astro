@@ -10,7 +10,7 @@ const {
 } = Astro.props;
 ---
 
-<div class={`container ${styles.strip}`}>
+<div class:list={["container", styles.strip]}>
   <span class={styles.icon}>⭐</span>
   <p class={styles.text}>{text}</p>
 </div>

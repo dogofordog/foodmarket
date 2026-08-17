@@ -3,7 +3,7 @@ import styles from './header.module.css';
 ---
 
 <header class={styles.header}>
-  <div class={`container ${styles.inner}`}>
+  <div class:list={["container", styles.inner]}>
     <a href="/" class={styles.logo}>
       <img
         class={styles.logoIcon}
@@ -22,9 +22,9 @@ import styles from './header.module.css';
       <button class={styles.menuButton} type="button">Меню</button>
 
       <button class={styles.burger} aria-label="Открыть меню" type="button">
-        <span class={`${styles.burgerLine} ${styles.burgerLineTop}`}></span>
+        <span class:list={[styles.burgerLine, styles.burgerLineTop]}></span>
         <span class={styles.burgerLine}></span>
-        <span class={`${styles.burgerLine} ${styles.burgerLineBottom}`}></span>
+        <span class:list={[styles.burgerLine, styles.burgerLineBottom]}></span>
       </button>
     </div>
   </div>
