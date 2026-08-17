@@ -10,12 +10,24 @@ const { title = 'Катасонов — кухня шефа' } = Astro.props;
 
 <!doctype html>
 <html lang="ru">
-  <head>
+   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    
+    <!-- 1. Для старых браузеров и RSS (обязательно sizes="32x32" для фикса бага Chrome) -->
+    <link rel="icon" href="/favicon.ico" sizes="32x32" />
+    
+    <!-- 2. Для современных браузеров (поддерживает темную тему) -->
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-    <link rel="icon" href="/favicon.ico" />
+    
+    <!-- 3. Для iOS (добавление на домашний экран) -->
+    <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
+    
+    <!-- 4. Для Android / PWA -->
+    <link rel="manifest" href="/manifest.webmanifest" />
+
     <meta name="generator" content={Astro.generator} />
+    <meta name="theme-color" content="#243122" /> <!-- Цвет вкладки браузера -->
 
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -27,16 +39,3 @@ const { title = 'Катасонов — кухня шефа' } = Astro.props;
     <slot />
   </body>
 </html>
-
-<style is:global>
-  *, *::before, *::after { box-sizing: border-box; }
-  *:not(dialog) { margin: 0; }
-  @media (prefers-reduced-motion: no-preference) { html { interpolate-size: allow-keywords; } }
-  body { line-height: 1.5; -webkit-font-smoothing: antialiased; }
-  img, picture, video, canvas, svg { display: block; max-width: 100%; }
-  input, button, textarea, select { font: inherit; }
-  p, h1, h2, h3, h4, h5, h6 { overflow-wrap: break-word; }
-  p { text-wrap: pretty; }
-  h1, h2, h3, h4, h5, h6 { text-wrap: balance; }
-  #root, #__next { isolation: isolate; }
-</style>
