@@ -1,9 +1,10 @@
 ---
 import styles from './header.module.css';
+import { containerStyles } from './container';
 ---
 
 <header class={styles.header}>
-  <div class:list={["container", styles.inner]}>
+ <div class:list={[containerStyles, styles.inner]}>
     <a href="/" class={styles.logo}>
       <img
         class={styles.logoIcon}

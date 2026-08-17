@@ -3,9 +3,10 @@ import styles from './hero.module.css';
 import Vegan from './icons/vegan.astro';
 import Order from './icons/order.astro';
 import Control from './icons/control.astro';
+import { containerStyles } from './container';
 ---
 
-<section class:list={["container", styles.section]}>
+<section class:list={[containerStyles, styles.section]}>
   <div class={styles.portraitArea}>
     <button class={styles.trigger} id="openChefModal" aria-label="Подробнее о шефе">
       <div class={styles.portraitWrap}>

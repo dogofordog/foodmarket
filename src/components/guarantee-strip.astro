@@ -1,5 +1,6 @@
 ---
 import styles from './guarantee-strip.module.css';
+import { containerStyles } from './container';
 
 interface Props {
   text?: string;
@@ -10,7 +11,7 @@ const {
 } = Astro.props;
 ---
 
-<div class:list={["container", styles.strip]}>
+<div class:list={[containerStyles, styles.strip]}>
   <span class={styles.icon}>⭐</span>
   <p class={styles.text}>{text}</p>
 </div>
