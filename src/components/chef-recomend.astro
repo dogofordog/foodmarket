@@ -1,0 +1,84 @@
+---
+import styles from './chef-recomend.module.css';
+
+const dishes = [
+  {
+    img: '/images/dishes/example.jpg',
+    tag: 'Хит',
+    tagGreen: false,
+    time: '3 ч',
+    timeOrange: false,
+    title: 'Пшенные вафли с кокосовым муссом и лесной черникой',
+    price: '490 ₽',
+  },
+  {
+    img: '/images/dishes/example.jpg',
+    tag: 'Хит',
+    tagGreen: false,
+    time: '1.5 ч',
+    timeOrange: false,
+    title: 'Авокадо-тост с яйцом пашот',
+    price: '420 ₽',
+  },
+  {
+    img: '/images/dishes/example.jpg',
+    tag: 'Хит',
+    tagGreen: false,
+    time: 'до 24 ч',
+    timeOrange: true,
+    title: 'Паровой чилийский сибас со спаржей и имбирным соусом',
+    price: '890 ₽',
+  },
+  {
+    img: '/images/dishes/example.jpg',
+    tag: 'Новинка',
+    tagGreen: true,
+    time: '2 ч',
+    timeOrange: false,
+    title: 'Мусс из тыквы с семенами чиа и натуральной ванилью',
+    price: '310 ₽',
+  },
+   {
+    img: '/images/dishes/example.jpg',
+    tag: 'Новинка',
+    tagGreen: true,
+    time: '2 ч',
+    timeOrange: false,
+    title: 'Мусс из тыквы с семенами чиа и натуральной ванилью',
+    price: '310 ₽',
+  },
+   {
+    img: '/images/dishes/example.jpg',
+    tag: 'Новинка',
+    tagGreen: true,
+    time: '2 ч',
+    timeOrange: false,
+    title: 'Мусс из тыквы с семенами чиа и натуральной ванилью',
+    price: '310 ₽',
+  }
+];
+---
+
+<section class={styles.section} id="chef-recomend">
+  <h2 class={styles.title}>Шеф рекомендует</h2>
+
+  <ul class={styles.cards}>
+    {dishes.map((dish) => (
+      <li class={styles.card}>
+        <div class={styles.media}>
+          <img class={styles.image} src={dish.img} alt={dish.title} />
+          <span class:list={[styles.badge, dish.tagGreen ? styles.badgeTagGreen : styles.badgeTag]}>
+            {dish.tag}
+          </span>
+          <span class:list={[styles.badge, styles.badgeTime, dish.timeOrange ? styles.timeOrange : styles.timeGreen]}>
+            🕐 {dish.time}
+          </span>
+        </div>
+        <div class={styles.body}>
+          <h3 class={styles.cardTitle}>{dish.title}</h3>
+          <button class={styles.button} type="button">Добавить за {dish.price}</button>
+        </div>
+      </li>
+    ))}
+  </ul>
+</section>
