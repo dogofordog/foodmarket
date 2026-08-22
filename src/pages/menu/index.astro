@@ -1,0 +1,21 @@
+---
+import Layout from '../../layouts/layout.astro';
+import ChefMenu from '../../components/chef-menu.astro';
+import { containerStyles } from '../../components/container';
+import styles from '../../styles/menu-category.module.css';
+---
+
+<Layout title="Меню — Катасонов">
+  <main>
+    <div class={styles.crumbsBar}>
+      <div class={containerStyles}>
+        <nav class={styles.crumbs} aria-label="Хлебные крошки">
+          <a href="/#chef-menu" class={styles.crumb}>Главная</a>
+          <span class={styles.crumbSep}>›</span>
+          <span class={styles.crumbCurrent} aria-current="page">Меню</span>
+        </nav>
+      </div>
+    </div>
+    <ChefMenu />
+  </main>
+</Layout>
