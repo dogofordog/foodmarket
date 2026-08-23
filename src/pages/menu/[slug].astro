@@ -1,0 +1,53 @@
+---
+import Layout from '../../layouts/layout.astro';
+import { containerStyles } from '../../components/container';
+import { categories } from '../../data/menu';
+import styles from '../../styles/menu-category.module.css';
+
+export function getStaticPaths() {
+  return categories.map((category) => ({
+    params: { slug: category.slug },
+  }));
+}
+
+const { slug } = Astro.params;
+const category = categories.find((c) => c.slug === slug);
+
+if (!category) {
+  return Astro.redirect('/');
+}
+---
+
+<Layout title={`${category.title} — Катасонов`}>
+  <main class={styles.page}>
+    <div class={containerStyles}>
+      <nav class={styles.crumbs} aria-label="Хлебные крошки">
+        <a href="/#chef-menu" class={styles.crumb}>Главная</a>
+        <span class={styles.crumbSep}>›</span>
+        <a href="/menu" class={styles.crumb}>Меню</a>
+        <span class={styles.crumbSep}>›</span>
+        <span class={styles.crumbCurrent} aria-current="page">{category.title}</span>
+      </nav>
+
+      <nav class={styles.chips} aria-label="Категории меню">
+        {categories.map((c) => (
+          <a
+            href={`/menu/${c.slug}`}
+            class:list={[styles.chip, c.slug === slug && styles.chipActive]}
+            aria-current={c.slug === slug ? 'page' : undefined}
+          >
+            {c.title}
+          </a>
+        ))}
+      </nav>
+
+      <h1 class={styles.title}>{category.title}</h1>
+
+      <ul class={styles.sublist}>
+        {category.subcategories.map((sub) => (
+          <li class={styles.subcard}>{sub}</li>
+        ))}
+      </ul>
+    </div>
+  </main>
+</Layout>
