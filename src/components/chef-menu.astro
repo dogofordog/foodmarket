@@ -1,0 +1,29 @@
+---
+import styles from './chef-menu.module.css';
+import { containerStyles } from './container';
+import { categories } from '../data/menu';
+---
+
+<section class={styles.section} id="chef-menu">
+  <div class:list={[containerStyles, styles.wrap]}>
+    <h2 class={styles.title}>Шеф-меню</h2>
+    <p class={styles.subtitle}>«Каждое блюдо — это история, рассказанная через вкус»</p>
+
+    <ul class={styles.grid}>
+      {categories.map((category) => (
+        <li>
+          <a class={styles.card} href={`/menu/${category.slug}`}>
+            <img
+              class={styles.image}
+              src={category.img}
+              alt={category.title}
+              loading="lazy"
+              decoding="async"
+            />
+            <span class={styles.label}>{category.title}</span>
+          </a>
+        </li>
+      ))}
+    </ul>
+  </div>
+</section>
