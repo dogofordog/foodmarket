@@ -1,0 +1,113 @@
+---
+import styles from './chef-recomend.module.css';
+
+const dishes = [
+  {
+    img: '/images/dishes/example.jpg',
+    tag: 'Хит',
+    tagGreen: false,
+    time: '3 ч',
+    timeOrange: false,
+    title: 'Пшенные вафли с кокосовым муссом и лесной черникой',
+    price: '490 ₽',
+    prep: 'Готовится 3 ч + доставка ~40 мин',
+  },
+  {
+    img: '/images/dishes/example.jpg',
+    tag: 'Хит',
+    tagGreen: false,
+    time: '1.5 ч',
+    timeOrange: false,
+    title: 'Авокадо-тост с яйцом пашот',
+    price: '420 ₽',
+    prep: 'Готовим на завтра',
+  },
+  {
+    img: '/images/dishes/example.jpg',
+    tag: 'Хит',
+    tagGreen: false,
+    time: 'до 24 ч',
+    timeOrange: true,
+    title: 'Паровой чилийский сибас со спаржей и имбирным соусом',
+    price: '890 ₽',
+    prep: 'Готовится 3 ч + доставка ~40 мин',
+  },
+  {
+    img: '/images/dishes/example.jpg',
+    tag: 'Новинка',
+    tagGreen: true,
+    time: '2 ч',
+    timeOrange: false,
+    title: 'Мусс из тыквы с семенами чиа и натуральной ванилью',
+    price: '310 ₽',
+    prep: 'Готовится 3 ч + доставка ~40 мин',
+  },
+   {
+    img: '/images/dishes/example.jpg',
+    tag: 'Новинка',
+    tagGreen: true,
+    time: '2 ч',
+    timeOrange: false,
+    title: 'Мусс из тыквы с семенами чиа и натуральной ванилью',
+    price: '310 ₽',
+    prep: 'Готовится 3 ч + доставка ~40 мин',
+  },
+   {
+    img: '/images/dishes/example.jpg',
+    tag: 'Новинка',
+    tagGreen: true,
+    time: '2 ч',
+    timeOrange: false,
+    title: 'Мусс из тыквы с семенами чиа и натуральной ванилью',
+    price: '310 ₽',
+    prep: 'Готовится 3 ч + доставка ~40 мин',
+  }
+];
+---
+<section class={styles.section} id="chef-recomend">
+  <h2 class={styles.title}>Шеф рекомендует</h2>
+
+  <button class={styles.arrowLeft} id="chefScrollLeft" aria-label="Предыдущие блюда">←</button>
+
+  <ul class={styles.cards} data-cards>
+    {dishes.map((dish) => (
+      <li class={styles.card}>
+        <div class={styles.media}>
+          <img class={styles.image} src={dish.img} alt={dish.title} loading="lazy" decoding="async" />
+          <span class:list={[styles.badge, dish.tagGreen ? styles.badgeTagGreen : styles.badgeTag]}>
+            {dish.tag}
+          </span>
+          <span class:list={[styles.badge, styles.badgeTime, dish.timeOrange ? styles.timeOrange : styles.timeGreen]}>
+            🕐 {dish.time}
+          </span>
+        </div>
+        <div class={styles.body}>
+          <h3 class={styles.cardTitle}>{dish.title}</h3>
+          <p class={styles.prep}>🕐 {dish.prep}</p>
+          <button class={styles.button} type="button">Добавить за {dish.price}</button>
+        </div>
+      </li>
+    ))}
+  </ul>
+
+  <button class={styles.arrowRight} id="chefScrollRight" aria-label="Следующие блюда">→</button>
+</section>
+
+<script>
+  document.addEventListener('DOMContentLoaded', () => {
+    const cards = document.querySelector('[data-cards]');
+    const left = document.getElementById('chefScrollLeft');
+    const right = document.getElementById('chefScrollRight');
+    if (!cards || !left || !right) return;
+
+    const step = () => {
+      const card = cards.querySelector('li');
+      if (!card) return 240;
+      const gap = parseFloat(getComputedStyle(cards).columnGap) || 16;
+      return card.getBoundingClientRect().width + gap;
+    };
+
+    left.addEventListener('click', () => cards.scrollBy({ left: -step(), behavior: 'smooth' }));
+    right.addEventListener('click', () => cards.scrollBy({ left: step(), behavior: 'smooth' }));
+  });
+</script>

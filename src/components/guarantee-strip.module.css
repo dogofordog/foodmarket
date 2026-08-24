@@ -3,7 +3,7 @@
   align-items: flex-start;
   gap: 0.5rem;
   background: #F9E2D2;
-  padding: 0.625rem 1rem; /* 10px / 16px — из Figma */
+  padding: 0.625rem 1rem; 
   font-size: 0.9rem;
   color: var(--color-text);
 }
