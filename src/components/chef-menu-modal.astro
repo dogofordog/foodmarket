@@ -1,0 +1,50 @@
+---
+import styles from './chef-menu-modal.module.css';
+import { categories } from '../data/menu';
+---
+
+<dialog id="chef-menu-modal" class={styles.modal}>
+  <div class={styles.inner}>
+    <button class={styles.close} type="button" data-menu-close aria-label="Закрыть меню">✕</button>
+
+    <p class={styles.overline}>Катасонов • Меню шефа</p>
+    <h2 class={styles.title}>Шеф-меню</h2>
+
+    <ul class={styles.grid}>
+      {categories.map((category) => (
+        <li>
+          <a class={styles.card} href={`/menu/${category.slug}`}>
+            <img
+              class={styles.image}
+              src={category.img}
+              alt={category.title}
+              loading="lazy"
+              decoding="async"
+            />
+            <span class={styles.label}>{category.title}</span>
+          </a>
+        </li>
+      ))}
+    </ul>
+  </div>
+
+  <script>
+    const dialog = document.getElementById('chef-menu-modal') as HTMLDialogElement;
+
+    // все кнопки/ссылки с data-menu-open открывают модалку
+    document.querySelectorAll('[data-menu-open]').forEach((el) => {
+      el.addEventListener('click', (event) => {
+        event.preventDefault(); // не переходим по href — открываем модалку
+        dialog.showModal();
+      });
+    });
+
+    // крестик закрывает
+    dialog.querySelector('[data-menu-close]')?.addEventListener('click', () => dialog.close());
+
+    // клик по тёмному фону (backdrop) закрывает
+    dialog.addEventListener('click', (event) => {
+      if (event.target === dialog) dialog.close();
+    });
+  </script>
+</dialog>
