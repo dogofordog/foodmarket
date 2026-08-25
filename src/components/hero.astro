@@ -1,0 +1,156 @@
+---
+import styles from './hero.module.css';
+import Vegan from './icons/vegan.astro';
+import Order from './icons/order.astro';
+import Control from './icons/control.astro';
+import { containerStyles } from './container';
+---
+
+<section class:list={[containerStyles, styles.section]}>
+  <div class={styles.portraitArea}>
+    <button class={styles.trigger} id="openChefModal" aria-label="Подробнее о шефе">
+      <div class={styles.portraitWrap}>
+        <picture>
+          <source media="(min-width: 900px)" srcset="/images/chef-800.jpg 1x, /images/chef-portrait.jpg 2x" />
+          <img
+            class={styles.portrait}
+            src="/images/chef-480.jpg"
+            srcset="/images/chef-480.jpg 1x, /images/chef-800.jpg 2x"
+            alt="Максим Катасонов, шеф-повар и основатель"
+            width="1074"
+            height="1020"
+          />
+        </picture>
+        <div class={styles.badge}>
+          <p class={styles.badgeTitle}>12+ лет</p>
+          <p class={styles.badgeSubtitle}>опыта в премиум сегменте</p>
+        </div>
+      </div>
+      <div class={styles.identity}>
+        <p class={styles.name}>Максим Катасонов</p>
+        <p class={styles.role}>шеф-повар и основатель</p>
+      </div>
+    </button>
+  </div>
+
+  <div class={styles.bio}>
+    <h1 class={styles.title}>Моя кухня,<br /> моя команда — моя гарантия вкуса</h1>
+    <p class={styles.description}>
+      Доставка авторских обедов и подписка на питание. Я лично отбираю
+      поставщиков на фермерских рынках Санкт-Петербурга, контролирую
+      весь процесс приготовления.
+    </p>
+
+    <ul class={styles.checklist}>
+      <li class={styles.checklistItem}>Никаких консервантов и красителей</li>
+      <li class={styles.checklistItem}>Современные методы приготовления</li>
+      <li class={styles.checklistItem}>Только охлаждённые фермерские продукты</li>
+      <li class={styles.checklistItem}>Команда профессиональных шеф-поваров</li>
+    </ul>
+
+    <ul class={styles.features}>
+      <li class={styles.feature}><Vegan /><span>Веган-меню</span></li>
+      <li class={styles.feature}><Order /><span>Разово или подписка</span></li>
+      <li class={styles.feature}><Control /><span>Личный контроль</span></li>
+    </ul>
+
+    <div class={styles.cta}>
+      <a href="#chef-menu" class={styles.viewMenuBtn}>Смотреть меню шефа</a>
+    </div>
+  </div>
+</section>
+
+<div class={styles.overlay} id="chefModal" aria-hidden="true">
+  <div class={styles.content}>
+    <button class={styles.close} id="closeChefModal" aria-label="Закрыть">&times;</button>
+
+    <div class={styles.modalHeader}>
+      <img class={styles.modalPhoto} src="/images/chef-480.jpg" alt="Максим Катасонов" width="200" height="200" />
+      <h2 class={styles.modalName}>Максим Катасонов</h2>
+      <p class={styles.modalRole}>Шеф-повар и основатель</p>
+    </div>
+
+    <div class={styles.modalBody}>
+      <div class={styles.modalSection}>
+        <h3 class={styles.modalSectionTitle}>Производство и консалтинг</h3>
+        <p class={styles.modalText}>
+          Составляю технологические карты и консультирую при открытии ресторанов.
+          В качестве бренд-шефа курировал запуск и стандартизацию меню на множестве
+          производственных площадок, реализуя как крупные коммерческие, так и государственные проекты.
+        </p>
+      </div>
+
+      <div class={styles.modalSection}>
+        <h3 class={styles.modalSectionTitle}>Премиальный кейтеринг</h3>
+        <p class={styles.modalText}>
+          Лично отвечал за гастрономическое сопровождение закрытых мероприятий
+          для крупнейших российских корпораций и люксовых брендов.
+        </p>
+      </div>
+
+      <div class={styles.modalSection}>
+        <h3 class={styles.modalSectionTitle}>Квалификация</h3>
+        <p class={styles.modalText}>
+          Регулярно повышаю уровень компетенций в таких проектах как, Школа Высокой Кухни (СВЧ, Санкт-Петербург),
+          перенимая новейшие техники у лучших шефов страны.
+        </p>
+      </div>
+
+      <div class={styles.modalSection}>
+        <blockquote class={styles.quote}>
+          «Весь этот масштабный опыт теперь работает на ваш ежедневный рацион.»
+        </blockquote>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script define:vars={{ activeClass: styles.active }}>
+  document.addEventListener('DOMContentLoaded', () => {
+    const modal = document.getElementById('chefModal');
+    const openBtn = document.getElementById('openChefModal');
+    const closeBtn = document.getElementById('closeChefModal');
+
+    if (!openBtn || !modal || !closeBtn) {
+      return;
+    }
+
+    let lastFocusedElement = null;
+
+    const openModal = (e) => {
+      e.preventDefault();
+      lastFocusedElement = document.activeElement;
+      modal.classList.add(activeClass);
+      modal.setAttribute('aria-hidden', 'false');
+      document.body.style.overflow = 'hidden';
+      closeBtn.focus();
+    };
+
+    const closeModal = () => {
+      modal.classList.remove(activeClass);
+      modal.setAttribute('aria-hidden', 'true');
+      document.body.style.overflow = '';
+      if (lastFocusedElement) {
+        lastFocusedElement.focus();
+        lastFocusedElement = null;
+      }
+    };
+
+    const handleOverlayClick = (e) => {
+      if (e.target === modal) {
+        closeModal();
+      }
+    };
+
+    const handleKeyDown = (e) => {
+      if (e.key === 'Escape' && modal.classList.contains(activeClass)) {
+        closeModal();
+      }
+    };
+
+    openBtn.addEventListener('click', openModal);
+    closeBtn.addEventListener('click', closeModal);
+    modal.addEventListener('click', handleOverlayClick);
+    document.addEventListener('keydown', handleKeyDown);
+  });
+</script>

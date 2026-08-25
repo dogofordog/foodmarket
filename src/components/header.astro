@@ -1,0 +1,32 @@
+---
+import styles from './header.module.css';
+import { containerStyles } from './container';
+---
+
+<header class={styles.header}>
+ <div class:list={[containerStyles, styles.inner]}>
+    <a href="/" class={styles.logo}>
+      <img
+        class={styles.logoIcon}
+        src="/images/logo-icon.svg"
+        alt="Катасонов"
+        width="32"
+        height="32"
+      />
+      <span class={styles.logoText}>
+        <span class={styles.logoTitle}>КАТАСОНОВ</span>
+        <span class={styles.logoSubtitle}>кухня шефа</span>
+      </span>
+    </a>
+
+    <div class={styles.actions}>
+      <button class={styles.menuButton} type="button" data-menu-open>Меню</button>
+
+      <button class={styles.burger} aria-label="Открыть меню" type="button">
+        <span class:list={[styles.burgerLine, styles.burgerLineTop]}></span>
+        <span class={styles.burgerLine}></span>
+        <span class:list={[styles.burgerLine, styles.burgerLineBottom]}></span>
+      </button>
+    </div>
+  </div>
+</header>
