@@ -1,0 +1,132 @@
+---
+import Layout from '../../layouts/layout.astro';
+import { containerStyles } from '../../components/container';
+import styles from '../../styles/subscription.module.css';
+
+const days = [
+  { day: 'Пн', date: '4 авг', active: true },
+  { day: 'Вт', date: '5 авг' },
+  { day: 'Ср', date: '6 авг' },
+  { day: 'Чт', date: '7 авг' },
+  { day: 'Пт', date: '8 авг' },
+  { day: 'Сб', date: '9 авг' },
+  { day: 'Вс', date: '10 авг' },
+];
+
+const dishes = [
+  { title: 'Пшенные вафли с муссом', weight: '320 г', img: '/images/menu/breakfast.jpg', selected: true },
+  { title: 'Паровой сибас со спаржей', weight: '280 г', img: '/images/menu/salads.jpg', selected: true },
+  { title: 'Су-вид индейки с киноа', weight: '310 г', img: '/images/menu/hot.jpg', selected: true },
+  { title: 'Овсянка с ягодами и семенами', weight: '290 г', img: '/images/menu/vegan.jpg', selected: false },
+  { title: 'Креветки в тайском соусе', weight: '260 г', img: '/images/menu/cold-snack.jpg', selected: false },
+  { title: 'Греческий салат с фетой', weight: '300 г', img: '/images/menu/deserts.jpg', selected: false },
+];
+---
+
+<Layout title="Подписка на питание — Катасонов">
+  <main class={styles.page}>
+    <div class={containerStyles}>
+      <nav class={styles.crumbs} aria-label="Хлебные крошки">
+        <a href="/" class={styles.crumb}>Главная</a>
+        <span class={styles['crumb-sep']}>›</span>
+        <span class={styles['crumb-current']} aria-current="page">Подписка на питание</span>
+      </nav>
+
+      <h1 class={styles.title}>Подписка на питание</h1>
+      <p class={styles.subtitle}>Ежедневная доставка авторских блюд от шеф-повара. Выбираете план — мы готовим и доставляем.</p>
+
+      <div class={styles['mode-toggle']}>
+        <div class={styles['mode-group']}>
+          <button class:list={[styles.mode, styles['mode-active']]} type="button">✋ Собрать самому</button>
+          <button class={styles.mode} type="button">📋 Заказать персональный план</button>
+        </div>
+      </div>
+
+      <div class={styles.layout}>
+        <div class={styles.left}>
+          <div class={styles['days-row']}>
+            <ul class={styles.days}>
+              {days.map((d) => (
+                <li class:list={[styles.day, d.active && styles['day-active']]}>
+                  <span class={styles['day-name']}>{d.day}</span>
+                  <span class={styles['day-date']}>{d.date}</span>
+                </li>
+              ))}
+            </ul>
+            <button class={styles['month-btn']} type="button">Меню на месяц</button>
+          </div>
+
+          <h2 class={styles['menu-title']}>Меню на понедельник, 4 августа</h2>
+
+          <ul class={styles.dishes}>
+            {dishes.map((dish) => (
+              <li>
+                <button
+                  class={styles.dish}
+                  type="button"
+                  data-dish
+                  data-selected={dish.selected ? 'true' : 'false'}
+                  aria-pressed={dish.selected}
+                >
+                  <span class={styles['dish-img-wrap']}>
+                    <img class={styles['dish-img']} src={dish.img} alt={dish.title} loading="lazy" decoding="async" />
+                    <span class={styles.check} aria-hidden="true">✓</span>
+                    <span class={styles.plus} aria-hidden="true">+</span>
+                  </span>
+                  <span class={styles['dish-body']}>
+                    <span class={styles['dish-title']}>{dish.title}</span>
+                    <span class={styles['dish-weight']}>{dish.weight}</span>
+                  </span>
+                </button>
+              </li>
+            ))}
+          </ul>
+
+          <ul class={styles.meals}>
+            <li class:list={[styles.meal, styles['meal-active']]}>3 блюда/день</li>
+            <li class={styles.meal}>4 блюда</li>
+            <li class={styles.meal}>5 блюд</li>
+            <li class={styles.meal}>6 блюд</li>
+          </ul>
+        </div>
+
+        <aside class={styles.plan}>
+          <h2 class={styles['plan-title']}>Ваш план</h2>
+
+          <p class={styles['plan-label']}>Продолжительность</p>
+          <div class={styles.duration}>
+            <button class={styles['duration-chip']} type="button">3 дня</button>
+            <button class={styles['duration-chip']} type="button">
+              6 дней <span class={styles['duration-badge']}>-10%</span>
+            </button>
+            <button class:list={[styles['duration-chip'], styles['duration-active']]} type="button">
+              30 дней <span class={styles['duration-badge']}>-25%</span>
+            </button>
+          </div>
+
+          <hr class={styles.divider} />
+
+          <p class={styles['plan-label']}>Состав</p>
+          <p class={styles.composition}>3 блюда × 30 дней</p>
+          <p class={styles.price}>27 900 ₽ <s>32 400 ₽</s></p>
+          <p class={styles['per-day']}>930 ₽/день · Доставка бесплатно</p>
+          <span class={styles.bonus}>+1 390 бонусов</span>
+
+          <a class={styles.cta} href="#">Оформить подписку</a>
+          <p class={styles.delivery}>📦 Одна доставка с питанием каждые 3 дня</p>
+          <p class={styles.note}>Без привязки карты. Отмена в любой момент.</p>
+        </aside>
+      </div>
+    </div>
+  </main>
+
+    <script>
+    document.querySelectorAll<HTMLElement>('[data-dish]').forEach((btn) => {
+      btn.addEventListener('click', () => {
+        const isSelected = btn.dataset.selected === 'true';
+        btn.dataset.selected = isSelected ? 'false' : 'true';
+        btn.setAttribute('aria-pressed', String(!isSelected));
+      });
+    });
+  </script>
+</Layout>
