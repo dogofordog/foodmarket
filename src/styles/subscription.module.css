@@ -75,19 +75,25 @@
 /* дни + кнопка месяца */
 .days-row {
   display: flex;
-  align-items: center;
+  flex-direction: column;
+  align-items: stretch;
   gap: 12px;
   margin-bottom: 20px;
-  overflow-x: auto;
-  padding-bottom: 4px;
 }
+
 .days {
   list-style: none;
   display: flex;
   gap: 8px;
   margin: 0;
-  padding: 0;
+  padding: 0 0 4px;
+  overflow-x: auto;
+  scrollbar-width: none;
 }
+.days::-webkit-scrollbar {
+  display: none;
+}
+
 .day {
   flex: 0 0 auto;
   display: flex;
@@ -119,7 +125,7 @@
   color: rgba(255, 255, 255, 0.7);
 }
 .month-btn {
-  flex: 0 0 auto;
+  align-self: flex-start;
   border: none;
   padding: 10px 16px;
   border-radius: 999px;
@@ -358,6 +364,13 @@
 }
 
 @media (min-width: 900px) {
+    .days-row {
+    flex-direction: row;
+    align-items: center;
+  }
+  .month-btn {
+    flex: 0 0 auto;
+  }
   .layout {
     grid-template-columns: 1fr 420px;
     align-items: start;
