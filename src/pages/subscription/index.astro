@@ -28,35 +28,35 @@ const dishes = [
     <div class={containerStyles}>
       <nav class={styles.crumbs} aria-label="Хлебные крошки">
         <a href="/" class={styles.crumb}>Главная</a>
-        <span class={styles['crumb-sep']}>›</span>
-        <span class={styles['crumb-current']} aria-current="page">Подписка на питание</span>
+        <span class={styles.crumbSep}>›</span>
+        <span class={styles.crumbCurrent} aria-current="page">Подписка на питание</span>
       </nav>
 
       <h1 class={styles.title}>Подписка на питание</h1>
       <p class={styles.subtitle}>Ежедневная доставка авторских блюд от шеф-повара. Выбираете план — мы готовим и доставляем.</p>
 
-      <div class={styles['mode-toggle']}>
-        <div class={styles['mode-group']}>
-          <button class:list={[styles.mode, styles['mode-active']]} type="button">✋ Собрать самому</button>
+      <div class={styles.modeToggle}>
+        <div class={styles.modeGroup}>
+          <button class:list={[styles.mode, styles.modeActive]} type="button">✋ Собрать самому</button>
           <button class={styles.mode} type="button">📋 Заказать персональный план</button>
         </div>
       </div>
 
       <div class={styles.layout}>
         <div class={styles.left}>
-          <div class={styles['days-row']}>
+          <div class={styles.daysRow}>
             <ul class={styles.days}>
               {days.map((d) => (
-                <li class:list={[styles.day, d.active && styles['day-active']]}>
-                  <span class={styles['day-name']}>{d.day}</span>
-                  <span class={styles['day-date']}>{d.date}</span>
+                <li class:list={[styles.day, d.active && styles.dayActive]}>
+                  <span class={styles.dayName}>{d.day}</span>
+                  <span class={styles.dayDate}>{d.date}</span>
                 </li>
               ))}
             </ul>
-            <button class={styles['month-btn']} type="button">Меню на месяц</button>
+            <button class={styles.monthBtn} type="button">Меню на месяц</button>
           </div>
 
-          <h2 class={styles['menu-title']}>Меню на понедельник, 4 августа</h2>
+          <h2 class={styles.menuTitle}>Меню на понедельник, 4 августа</h2>
 
           <ul class={styles.dishes}>
             {dishes.map((dish) => (
@@ -68,14 +68,14 @@ const dishes = [
                   data-selected={dish.selected ? 'true' : 'false'}
                   aria-pressed={dish.selected}
                 >
-                  <span class={styles['dish-img-wrap']}>
-                    <img class={styles['dish-img']} src={dish.img} alt={dish.title} loading="lazy" decoding="async" />
+                  <span class={styles.dishImgWrap}>
+                    <img class={styles.dishImg} src={dish.img} alt={dish.title} loading="lazy" decoding="async" />
                     <span class={styles.check} aria-hidden="true">✓</span>
                     <span class={styles.plus} aria-hidden="true">+</span>
                   </span>
-                  <span class={styles['dish-body']}>
-                    <span class={styles['dish-title']}>{dish.title}</span>
-                    <span class={styles['dish-weight']}>{dish.weight}</span>
+                  <span class={styles.dishBody}>
+                    <span class={styles.dishTitle}>{dish.title}</span>
+                    <span class={styles.dishWeight}>{dish.weight}</span>
                   </span>
                 </button>
               </li>
@@ -83,7 +83,7 @@ const dishes = [
           </ul>
 
           <ul class={styles.meals}>
-            <li class:list={[styles.meal, styles['meal-active']]}>3 блюда/день</li>
+            <li class:list={[styles.meal, styles.mealActive]}>3 блюда/день</li>
             <li class={styles.meal}>4 блюда</li>
             <li class={styles.meal}>5 блюд</li>
             <li class={styles.meal}>6 блюд</li>
@@ -91,25 +91,25 @@ const dishes = [
         </div>
 
         <aside class={styles.plan}>
-          <h2 class={styles['plan-title']}>Ваш план</h2>
+          <h2 class={styles.planTitle}>Ваш план</h2>
 
-          <p class={styles['plan-label']}>Продолжительность</p>
+          <p class={styles.planLabel}>Продолжительность</p>
           <div class={styles.duration}>
-            <button class={styles['duration-chip']} type="button">3 дня</button>
-            <button class={styles['duration-chip']} type="button">
-              6 дней <span class={styles['duration-badge']}>-10%</span>
+            <button class={styles.durationChip} type="button">3 дня</button>
+            <button class={styles.durationChip} type="button">
+              6 дней <span class={styles.durationBadge}>-10%</span>
             </button>
-            <button class:list={[styles['duration-chip'], styles['duration-active']]} type="button">
-              30 дней <span class={styles['duration-badge']}>-25%</span>
+            <button class:list={[styles.durationChip, styles.durationActive]} type="button">
+              30 дней <span class={styles.durationBadge}>-25%</span>
             </button>
           </div>
 
           <hr class={styles.divider} />
 
-          <p class={styles['plan-label']}>Состав</p>
+          <p class={styles.planLabel}>Состав</p>
           <p class={styles.composition}>3 блюда × 30 дней</p>
           <p class={styles.price}>27 900 ₽ <s>32 400 ₽</s></p>
-          <p class={styles['per-day']}>930 ₽/день · Доставка бесплатно</p>
+          <p class={styles.perDay}>930 ₽/день · Доставка бесплатно</p>
           <span class={styles.bonus}>+1 390 бонусов</span>
 
           <a class={styles.cta} href="#">Оформить подписку</a>
@@ -120,7 +120,7 @@ const dishes = [
     </div>
   </main>
 
-    <script>
+  <script>
     document.querySelectorAll<HTMLElement>('[data-dish]').forEach((btn) => {
       btn.addEventListener('click', () => {
         const isSelected = btn.dataset.selected === 'true';
