@@ -1,19 +1,16 @@
 :root {
-  --color-primary: #4FA1A2;
+  --color-primary: #4fa1a2;
   --color-primary-dark: #243122;
-  --color-surface-mint: #E8F5F3;
-  --color-border: #E6E6E6;
-  --color-bg: #F4F1EC;
+  --color-surface-mint: #e8f5f3;
+  --color-border: #e6e6e6;
+  --color-bg: #f4f1ec;
   --color-text: #243122;
   --color-text-muted: #6b6b5e;
-  --color-white: #ffffff;
-
-  --font-base: 'Inter Variable', 'Inter', system-ui, sans-serif;
-  --font-heading: 'Montserrat', system-ui, sans-serif;
-
+  --color-white: #fff;
+  --font-base: "Inter Variable", "Inter", system-ui, sans-serif;
+  --font-heading: "Montserrat", system-ui, sans-serif;
   --font-size-base: 1rem;
   --font-size-min: 0.875rem;
-
   --radius-md: 12px;
   --radius-lg: 16px;
   --container-width: 1200px;
@@ -21,8 +18,15 @@
 
 body {
   font-size: var(--font-size-base);
+  -webkit-font-smoothing: antialiased;
+  font-family: var(--font-base);
+  color: var(--color-text);
+  background: var(--color-bg);
 }
-*, *::before, *::after {
+
+*,
+*::before,
+*::after {
   box-sizing: border-box;
 }
 
@@ -36,24 +40,29 @@ body {
   }
 }
 
-body {
-  line-height: 1.5;
-  -webkit-font-smoothing: antialiased;
-  font-family: var(--font-base);
-  color: var(--color-text);
-  background: var(--color-bg);
-}
-
-img, picture, video, canvas, svg {
+img,
+picture,
+video,
+canvas,
+svg {
   display: block;
   max-width: 100%;
 }
 
-input, button, textarea, select {
+input,
+button,
+textarea,
+select {
   font: inherit;
 }
 
-p, h1, h2, h3, h4, h5, h6 {
+p,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
   overflow-wrap: break-word;
 }
 
@@ -61,11 +70,11 @@ p {
   text-wrap: pretty;
 }
 
-h1, h2, h3, h4, h5, h6 {
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
   text-wrap: balance;
 }
-
-#root, #__next {
-  isolation: isolate;
-}
-
