@@ -1,9 +1,9 @@
 ---
-import Layout from '../../layouts/layout.astro';
-import { containerStyles } from '../../components/container';
-import { audiences } from '../../data/audiences';
-import type { Audience } from '../../data/audiences';
-import styles from '../../styles/audience.module.css';
+import Layout from '@/layouts/layout.astro';
+import { containerStyles } from '@/components/container';
+import { audiences } from '@/data/audiences';
+import type { Audience } from '@/data/audiences';
+import styles from './audience.module.css';
 
 export function getStaticPaths() {
   return audiences.map((audience) => ({
@@ -24,8 +24,8 @@ const { audience } = Astro.props;
     <div class={containerStyles}>
       <nav class={styles.crumbs} aria-label="Хлебные крошки">
         <a href="/" class={styles.crumb}>Главная</a>
-        <span class={styles['crumb-sep']}>›</span>
-        <span class={styles['crumb-current']} aria-current="page">{audience.title}</span>
+        <span class={styles.crumbSep}>›</span>
+        <span class={styles.crumbCurrent} aria-current="page">{audience.title}</span>
       </nav>
 
       <h1 class={styles.title}>{audience.title}</h1>
