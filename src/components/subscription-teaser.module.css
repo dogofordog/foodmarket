@@ -24,7 +24,7 @@
   content: "";
   position: absolute;
   inset: 0;
-  background: linear-gradient(100deg, rgba(24, 18, 12, 0.7), rgba(24, 18, 12, 0.25));
+  background: linear-gradient(100deg, rgb(24 18 12 / 70%), rgb(24 18 12 / 25%));
 }
 
 /* мобильный: колонка */
@@ -57,7 +57,7 @@
 .text {
   margin: 0;
   max-width: 32ch;
-  color: rgba(255, 255, 255, 0.92);
+  color: rgb(255 255 255 / 92%);
   font-size: 15px;
   line-height: 1.45;
 }
@@ -76,7 +76,7 @@
 }
 
 .price-old {
-  color: rgba(255, 255, 255, 0.65);
+  color: rgb(255 255 255 / 65%);
   font-size: 15px;
 }
 
@@ -88,7 +88,9 @@
   color: #2a1e22;
   font-size: 15px;
   font-weight: 600;
-  transition: background 0.2s ease, transform 0.2s ease;
+  transition:
+    background 0.2s ease,
+    transform 0.2s ease;
 }
 
 .card:hover .button {
@@ -106,7 +108,7 @@
   outline-offset: 3px;
 }
 
-@media (min-width: 900px) {
+@media (width >= 900px) {
   .content {
     flex-direction: row;
     align-items: center;

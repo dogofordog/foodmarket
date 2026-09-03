@@ -4,7 +4,7 @@
   align-items: stretch;
   gap: 20px;
   padding: 48px 0;
-  background: #ffffff;
+  background: #fff;
 }
 
 .title {
@@ -35,8 +35,8 @@
   flex: 0 0 220px;
   display: flex;
   flex-direction: column;
-  background: #ffffff;
-  border: 1px solid #E6E6E6;
+  background: #fff;
+  border: 1px solid #e6e6e6;
   border-radius: 12px;
   overflow: hidden;
   scroll-snap-align: start;
@@ -66,30 +66,30 @@
 
 .badge-tag {
   left: 8px;
-  background: #F0F0F0;
+  background: #f0f0f0;
   color: #243122;
   font-weight: 600;
 }
 
 .badge-tag-green {
   left: 8px;
-  background: #4A7D59;
-  color: #ffffff;
+  background: #4a7d59;
+  color: #fff;
   font-weight: 700;
 }
 
 .badge-time {
   right: 8px;
-  color: #ffffff;
+  color: #fff;
   font-weight: 700;
 }
 
 .time-green {
-  background: #4A7D59;
+  background: #4a7d59;
 }
 
 .time-orange {
-  background: #C98A3B;
+  background: #c98a3b;
 }
 
 .body {
@@ -124,9 +124,9 @@
   align-items: center;
   width: 100%;
   padding: 8px 0;
-  border: 1px solid #F2B8BA;
+  border: 1px solid #f2b8ba;
   border-radius: 6px;
-  background: #ffffff;
+  background: #fff;
   color: #243122;
   font-weight: 600;
   font-size: 11px;
@@ -150,7 +150,7 @@
   height: 40px;
   border: 1px solid #e6e6e6;
   border-radius: 50%;
-  background: #ffffff;
+  background: #fff;
   color: #243122;
   font-size: 16px;
   align-items: center;
@@ -173,7 +173,7 @@
   background: var(--color-surface-mint);
 }
 
-@media (min-width: 900px) {
+@media (width >= 900px) {
   .section {
     position: relative;
   }
@@ -205,10 +205,9 @@
     scroll-snap-align: start;
   }
 
- .card-title {
-  white-space: normal;
-  overflow: visible;
-  min-height: 2.4em;
-}
-
+  .card-title {
+    white-space: normal;
+    overflow: visible;
+    min-height: 2.4em;
+  }
 }

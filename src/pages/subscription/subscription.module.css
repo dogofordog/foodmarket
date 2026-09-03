@@ -11,16 +11,20 @@
   margin-bottom: 16px;
   font-size: 13px;
 }
+
 .crumb {
   color: var(--color-primary);
   text-decoration: none;
 }
+
 .crumb:hover {
   text-decoration: underline;
 }
+
 .crumb-sep {
   color: var(--color-text-muted);
 }
+
 .crumb-current {
   color: var(--color-text-muted);
 }
@@ -32,6 +36,7 @@
   font-weight: 700;
   color: var(--color-text);
 }
+
 .subtitle {
   margin: 0 0 24px;
   color: var(--color-text-muted);
@@ -44,6 +49,7 @@
   justify-content: center;
   margin: 0 0 32px;
 }
+
 .mode-group {
   display: inline-flex;
   gap: 4px;
@@ -51,6 +57,7 @@
   border-radius: 999px;
   background: #e9e7e2;
 }
+
 .mode {
   border: none;
   background: transparent;
@@ -61,6 +68,7 @@
   color: var(--color-text-muted);
   cursor: pointer;
 }
+
 .mode-active {
   background: var(--color-primary);
   color: var(--color-white);
@@ -90,6 +98,7 @@
   overflow-x: auto;
   scrollbar-width: none;
 }
+
 .days::-webkit-scrollbar {
   display: none;
 }
@@ -105,25 +114,31 @@
   border: 1px solid var(--color-border);
   background: var(--color-white);
 }
+
 .day-name {
   font-size: 14px;
   font-weight: 700;
   color: var(--color-text);
 }
+
 .day-date {
   font-size: 11px;
   color: var(--color-text-muted);
 }
+
 .day-active {
   background: #243122;
   border-color: #243122;
 }
+
 .day-active .day-name {
   color: var(--color-white);
 }
+
 .day-active .day-date {
-  color: rgba(255, 255, 255, 0.7);
+  color: rgb(255 255 255 / 70%);
 }
+
 .month-btn {
   align-self: flex-start;
   border: none;
@@ -152,6 +167,7 @@
   grid-template-columns: repeat(2, 1fr);
   gap: 12px;
 }
+
 .dish {
   position: relative;
   width: 100%;
@@ -162,18 +178,21 @@
   text-align: left;
   cursor: pointer;
 }
+
 .dish-img-wrap {
   position: relative;
   display: block;
   border-radius: 8px;
   overflow: hidden;
 }
+
 .dish-img {
   display: block;
   width: 100%;
   aspect-ratio: 4 / 3;
   object-fit: cover;
 }
+
 .check,
 .plus {
   position: absolute;
@@ -188,28 +207,35 @@
   font-size: 14px;
   font-weight: 700;
 }
+
 .check {
   display: none;
   background: var(--color-primary);
   color: var(--color-white);
 }
+
 .plus {
-  background: rgba(255, 255, 255, 0.9);
+  background: rgb(255 255 255 / 90%);
   color: var(--color-text);
 }
+
 .dish[data-selected="true"] {
   border-color: var(--color-primary);
 }
+
 .dish[data-selected="true"] .check {
   display: flex;
 }
+
 .dish[data-selected="true"] .plus {
   display: none;
 }
+
 .dish-body {
   display: block;
   padding: 10px 4px 4px;
 }
+
 .dish-title {
   display: block;
   margin: 0 0 6px;
@@ -217,11 +243,13 @@
   font-weight: 600;
   color: var(--color-text);
 }
+
 .dish-weight {
   display: block;
   font-size: 12px;
   color: var(--color-text-muted);
 }
+
 .dish[data-selected="false"] .dish-title,
 .dish[data-selected="false"] .dish-weight {
   color: var(--color-text-muted);
@@ -236,6 +264,7 @@
   margin: 0;
   padding: 0;
 }
+
 .meal {
   padding: 10px 16px;
   border-radius: 999px;
@@ -245,6 +274,7 @@
   font-weight: 600;
   color: var(--color-text);
 }
+
 .meal-active {
   background: var(--color-primary);
   border-color: var(--color-primary);
@@ -258,35 +288,40 @@
   background: #2d554c;
   color: var(--color-white);
 }
+
 .plan-title {
   margin: 0 0 16px;
   font-size: 20px;
   font-weight: 700;
 }
+
 .plan-label {
   margin: 0 0 10px;
   font-size: 13px;
-  color: rgba(255, 255, 255, 0.7);
+  color: rgb(255 255 255 / 70%);
 }
+
 .duration {
   display: flex;
   flex-wrap: wrap;
   gap: 8px;
   margin: 0 0 20px;
 }
+
 .duration-chip {
   display: flex;
   align-items: center;
   gap: 8px;
   padding: 10px 16px;
   border-radius: 999px;
-  border: 1px solid rgba(255, 255, 255, 0.35);
+  border: 1px solid rgb(255 255 255 / 35%);
   background: transparent;
   color: var(--color-white);
   font-size: 14px;
   font-weight: 600;
   cursor: pointer;
 }
+
 .duration-badge {
   padding: 2px 8px;
   border-radius: 999px;
@@ -295,41 +330,49 @@
   font-size: 12px;
   font-weight: 700;
 }
+
 .duration-active {
   background: #f2b7c6;
   border-color: #f2b7c6;
   color: #2a1e22;
 }
+
 .duration-active .duration-badge {
   background: #243122;
   color: var(--color-white);
 }
+
 .divider {
   border: none;
-  border-top: 1px solid rgba(255, 255, 255, 0.2);
+  border-top: 1px solid rgb(255 255 255 / 20%);
   margin: 0 0 16px;
 }
+
 .composition {
   margin: 0 0 8px;
   font-size: 15px;
   font-weight: 700;
 }
+
 .price {
   margin: 0 0 6px;
   font-size: 32px;
   font-weight: 800;
 }
+
 .price s {
   margin-left: 10px;
   font-size: 15px;
   font-weight: 500;
-  color: rgba(255, 255, 255, 0.5);
+  color: rgb(255 255 255 / 50%);
 }
+
 .per-day {
   margin: 0 0 12px;
   font-size: 13px;
-  color: rgba(255, 255, 255, 0.8);
+  color: rgb(255 255 255 / 80%);
 }
+
 .bonus {
   display: inline-block;
   margin-bottom: 16px;
@@ -340,6 +383,7 @@
   font-size: 12px;
   font-weight: 700;
 }
+
 .cta {
   display: block;
   margin-bottom: 12px;
@@ -351,34 +395,40 @@
   text-align: center;
   text-decoration: none;
 }
+
 .delivery {
   margin: 0 0 12px;
   font-size: 13px;
-  color: rgba(255, 255, 255, 0.85);
+  color: rgb(255 255 255 / 85%);
 }
+
 .note {
   margin: 0;
   text-align: center;
   font-size: 12px;
-  color: rgba(255, 255, 255, 0.5);
+  color: rgb(255 255 255 / 50%);
 }
 
-@media (min-width: 900px) {
-    .days-row {
+@media (width >= 900px) {
+  .days-row {
     flex-direction: row;
     align-items: center;
   }
+
   .month-btn {
     flex: 0 0 auto;
   }
+
   .layout {
     grid-template-columns: 1fr 420px;
     align-items: start;
   }
+
   .plan {
     position: sticky;
     top: 24px;
   }
+
   .dishes {
     grid-template-columns: repeat(3, 1fr);
   }

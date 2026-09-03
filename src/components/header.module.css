@@ -90,6 +90,7 @@
   cursor: pointer;
   padding: 0;
   flex-shrink: 0;
+
   --line-top-y: 0;
   --line-bottom-y: 0;
 }
@@ -117,7 +118,7 @@
   transform: translateY(var(--line-bottom-y));
 }
 
-@media (min-width: 768px) {
+@media (width >= 768px) {
   .inner {
     padding-block: 1rem;
   }
