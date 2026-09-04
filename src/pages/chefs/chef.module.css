@@ -1,0 +1,80 @@
+.page {
+  padding: 24px 0 48px;
+  background: var(--color-bg);
+  min-height: 100vh;
+}
+
+.crumbs {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 16px;
+  font-size: 13px;
+}
+.crumb {
+  color: var(--color-primary);
+  text-decoration: none;
+}
+.crumb:hover {
+  text-decoration: underline;
+}
+.crumb-sep {
+  color: var(--color-text-muted);
+}
+.crumb-current {
+  color: var(--color-text-muted);
+}
+
+.title {
+  margin: 0 0 4px;
+  font-family: var(--font-heading);
+  font-size: 28px;
+  font-weight: 700;
+  color: var(--color-text);
+}
+.role {
+  margin: 0 0 16px;
+  font-size: 12px;
+  font-weight: 600;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--color-text-muted);
+}
+
+.hero {
+  display: block;
+  width: 100%;
+  aspect-ratio: 16 / 9;
+  object-fit: cover;
+  border-radius: 16px;
+  margin-bottom: 16px;
+}
+
+.card {
+  padding: 16px;
+  background: var(--color-white);
+  border: 1px solid var(--color-border);
+  border-radius: 16px;
+}
+.exp {
+  margin: 0 0 8px;
+  font-size: 14px;
+  font-weight: 600;
+  color: var(--color-text);
+}
+.text {
+  margin: 0 0 12px;
+  font-size: 15px;
+  line-height: 1.5;
+  color: var(--color-text-muted);
+}
+.cta {
+  display: block;
+  padding: 14px;
+  border-radius: 999px;
+  background: var(--color-primary);
+  color: var(--color-white);
+  font-weight: 700;
+  text-align: center;
+  text-decoration: none;
+}

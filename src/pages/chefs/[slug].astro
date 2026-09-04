@@ -1,0 +1,43 @@
+---
+import Layout from '@/layouts/layout.astro';
+import { containerStyles } from '@/components/container';
+import { chefs } from '@/data/chefs';
+import type { Chef } from '@/data/chefs';
+import styles from './chef.module.css';
+
+export function getStaticPaths() {
+  return chefs.map((chef) => ({
+    params: { slug: chef.slug },
+    props: { chef },
+  }));
+}
+
+interface Props {
+  chef: Chef;
+}
+
+const { chef } = Astro.props;
+---
+
+<Layout title={`${chef.name} — Катасонов`}>
+  <main class={styles.page}>
+    <div class={containerStyles}>
+      <nav class={styles.crumbs} aria-label="Хлебные крошки">
+        <a href="/" class={styles.crumb}>Главная</a>
+        <span class={styles.crumbSep}>›</span>
+        <span class={styles.crumbCurrent} aria-current="page">{chef.name}</span>
+      </nav>
+
+      <h1 class={styles.title}>{chef.name}</h1>
+      <p class={styles.role}>{chef.role}</p>
+      <img class={styles.hero} src={chef.img} alt={chef.name} />
+
+      <section class={styles.card}>
+        <p class={styles.exp}>{chef.experience}</p>
+        <p class={styles.text}>{chef.description}</p>
+        <p class={styles.text}>Меню шефа появится здесь в одном из следующих спринтов.</p>
+        <a class={styles.cta} href="/">Вернуться на главную</a>
+      </section>
+    </div>
+  </main>
+</Layout>
