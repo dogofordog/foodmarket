@@ -1,10 +1,11 @@
 ---
-import Layout from '../layouts/layout.astro';
-import Hero from '../components/hero.astro';
-import GuaranteeStrip from '../components/guarantee-strip.astro';
-import ChefRecomend from '../components/chef-recomend.astro';
-import ChefMenu from '../components/chef-menu.astro';
-import SubscriptionTeaser from '../components/subscription-teaser.astro';
+import Layout from '@/layouts/layout.astro';
+import Hero from '@/components/hero.astro';
+import GuaranteeStrip from '@/components/guarantee-strip.astro';
+import ChefRecomend from '@/components/chef-recomend.astro';
+import ChefMenu from '@/components/chef-menu.astro';
+import SubscriptionTeaser from '@/components/subscription-teaser.astro';
+import Audiences from '@/components/audiences.astro';
 ---
 
 <Layout title="Катасонов — кухня шефа">
@@ -12,5 +13,6 @@ import SubscriptionTeaser from '../components/subscription-teaser.astro';
   <GuaranteeStrip />
   <ChefRecomend />
   <ChefMenu />
-  <SubscriptionTeaser/>
+  <SubscriptionTeaser />
+  <Audiences />
 </Layout>

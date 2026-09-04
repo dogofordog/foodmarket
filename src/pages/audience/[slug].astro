@@ -1,0 +1,41 @@
+---
+import Layout from '@/layouts/layout.astro';
+import { containerStyles } from '@/components/container';
+import { audiences } from '@/data/audiences';
+import type { Audience } from '@/data/audiences';
+import styles from './audience.module.css';
+
+export function getStaticPaths() {
+  return audiences.map((audience) => ({
+    params: { slug: audience.slug },
+    props: { audience },
+  }));
+}
+
+interface Props {
+  audience: Audience;
+}
+
+const { audience } = Astro.props;
+---
+
+<Layout title={`${audience.title} — Катасонов`}>
+  <main class={styles.page}>
+    <div class={containerStyles}>
+      <nav class={styles.crumbs} aria-label="Хлебные крошки">
+        <a href="/" class={styles.crumb}>Главная</a>
+        <span class={styles.crumbSep}>›</span>
+        <span class={styles.crumbCurrent} aria-current="page">{audience.title}</span>
+      </nav>
+
+      <h1 class={styles.title}>{audience.title}</h1>
+      <p class={styles.subtitle}>{audience.subtitle}</p>
+      <img class={styles.hero} src={audience.img} alt={audience.title} />
+
+      <section class={styles.card}>
+        <p class={styles.text}>Страница в разработке — подробно о формате расскажем здесь в одном из следующих спринтов.</p>
+        <a class={styles.cta} href="/">Вернуться на главную</a>
+      </section>
+    </div>
+  </main>
+</Layout>
