@@ -1,0 +1,26 @@
+---
+import styles from './audiences.module.css';
+import { containerStyles } from './container';
+import { audiences } from '../data/audiences';
+---
+
+<section class={styles.section}>
+  <div class={containerStyles}>
+    <h2 class={styles.title}>Для кого мы работаем</h2>
+    <ul class={styles.grid}>
+      {audiences.map((a) => (
+        <li>
+          <a class={styles.card} href={`/audience/${a.slug}`}>
+            <span class={styles['image-wrap']}>
+              <img class={styles.image} src={a.img} alt={a.title} loading="lazy" decoding="async" />
+            </span>
+            <span class={styles.body}>
+              <span class={styles['card-title']}>{a.title}</span>
+              <span class={styles.subtitle}>{a.subtitle}</span>
+            </span>
+          </a>
+        </li>
+      ))}
+    </ul>
+  </div>
+</section>

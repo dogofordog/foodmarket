@@ -1,0 +1,31 @@
+---
+import styles from "./subscription-teaser.module.css";
+import { containerStyles } from "./container";
+---
+
+<section class={styles.section}>
+  <div class={containerStyles}>
+    <a href="/subscription" class={styles.card}>
+      <img
+        class={styles.bg}
+        src="/images/subscription/teaser.jpg"
+        alt=""
+        loading="lazy"
+        decoding="async"
+      />
+      <div class={styles.content}>
+        <div class={styles.head}>
+          <h2 class={styles.title}>Подписка на питание</h2>
+          <p class={styles.text}>
+            Ежедневная доставка авторских блюд — свежих и готовых к подаче
+          </p>
+        </div>
+        <p class={styles.price}>
+          <span class={styles.priceNow}>от 930 ₽/день</span>
+          <s class={styles.priceOld}>1 240 ₽</s>
+          <span class={styles.button}>Узнать про подписку</span>
+        </p>
+      </div>
+    </a>
+  </div>
+</section>

@@ -1,8 +1,8 @@
 ---
-import Layout from '../../layouts/layout.astro';
-import { containerStyles } from '../../components/container';
-import { categories } from '../../data/menu';
-import styles from '../../styles/menu-category.module.css';
+import Layout from '@/layouts/layout.astro';
+import { containerStyles } from '@/components/container';
+import { categories } from '@/data/menu';
+import styles from './menu-category.module.css';
 
 export function getStaticPaths() {
   return categories.map((category) => ({
