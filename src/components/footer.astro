@@ -1,0 +1,110 @@
+---
+import styles from './footer.module.css';
+import { containerStyles } from '@/components/container';
+import { footerNav, contacts, legalLinks } from '@/data/footer';
+---
+
+<footer class={styles.footer}>
+  <div class={containerStyles}>
+    <div class={styles.top}>
+      <div class={styles.brand}>
+        <p class={styles.brandName}>КАТАСОНОВ МАКСИМ</p>
+        <p class={styles.brandTag}>PERSONAL CHEF BRAND</p>
+        <p class={styles.brandText}>
+          Качественное сбалансированное питание ресторанного уровня, созданное
+          под личным руководством профессионального шеф-повара.
+        </p>
+        <div class={styles.socials}>
+          <a class={styles.social} href="#" aria-label="Telegram">
+            <svg
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="1.6"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              aria-hidden="true"
+            >
+              <path d="M22 2 11 13"></path>
+              <path d="M22 2 15 22l-4-9-9-4Z"></path>
+            </svg>
+          </a>
+          <a class={styles.social} href="#" aria-label="Instagram">
+            <svg
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="1.6"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              aria-hidden="true"
+            >
+              <rect x="2" y="2" width="20" height="20" rx="5"></rect>
+              <circle cx="12" cy="12" r="4"></circle>
+              <line x1="17.5" y1="6.5" x2="17.5" y2="6.5"></line>
+            </svg>
+          </a>
+          <a class={styles.social} href="#" aria-label="ВКонтакте">
+            <svg
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="1.6"
+              aria-hidden="true"
+            >
+              <circle cx="12" cy="12" r="9"></circle>
+            </svg>
+          </a>
+        </div>
+      </div>
+
+      <div class={styles.navGrid}>
+        {
+          footerNav.map((col) => (
+            <nav class={styles.col} aria-label={col.title}>
+              <p class={styles.colTitle}>{col.title}</p>
+              <ul class={styles.colList}>
+                {col.links.map((link) => (
+                  <li>
+                    <a class={styles.colLink} href={link.href}>
+                      {link.title}
+                    </a>
+                  </li>
+                ))}
+              </ul>
+            </nav>
+          ))
+        }
+      </div>
+
+      <div class={styles.contactsCol}>
+        <p class={styles.colTitle}>Контакты</p>
+        <div class={styles.contacts}>
+          <p>{contacts.address}</p>
+          <a class={styles.contactPhone} href={contacts.phoneHref}
+            >{contacts.phone}</a
+          >
+          <a class={styles.contactLink} href={`mailto:${contacts.email}`}
+            >{contacts.email}</a
+          >
+          <p>{contacts.hours}</p>
+        </div>
+      </div>
+    </div>
+
+    <div class={styles.bottom}>
+      <p class={styles.copy}>© 2025 Катасонов Максим. Все права защищены.</p>
+      <ul class={styles.legal}>
+        {
+          legalLinks.map((link) => (
+            <li>
+              <a class={styles.legalLink} href={link.href}>
+                {link.title}
+              </a>
+            </li>
+          ))
+        }
+      </ul>
+    </div>
+  </div>
+</footer>
