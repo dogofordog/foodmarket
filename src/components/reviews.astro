@@ -1,0 +1,92 @@
+---
+import styles from './reviews.module.css';
+import { containerStyles } from '@/components/container';
+import { reviews } from '@/data/reviews';
+---
+
+<section class={styles.section}>
+  <div class={containerStyles}>
+    <div class={styles.head}>
+      <h2 class={styles.title}>Наши благодарности</h2>
+      <p class={styles.subtitle}>
+        Реальные отзывы наших клиентов из Пушкина, Колпино и Петербурга
+      </p>
+      <button class={styles.cta} type="button">Оставить отзыв</button>
+    </div>
+
+    <div class={styles.slider}>
+      <ul class={styles.grid} data-reviews-grid>
+        {
+          reviews.map((review) => (
+            <li class={styles.item}>
+              <article class={styles.card}>
+                <div class={styles.cardHead}>
+                  <img
+                    class={styles.avatar}
+                    src={review.avatar}
+                    alt={review.name}
+                    loading="lazy"
+                    decoding="async"
+                  />
+                  <div class={styles.who}>
+                    <p class={styles.name}>{review.name}</p>
+                    <p class={styles.tag}>{review.tag}</p>
+                  </div>
+                  <span
+                    class={styles.stars}
+                    aria-label={`Оценка ${review.rating} из 5`}
+                  >
+                    {Array.from({ length: 5 }, (_, i) => (
+                      <span
+                        class:list={[
+                          styles.star,
+                          i < review.rating && styles.starFilled,
+                        ]}
+                        aria-hidden="true"
+                      >
+                        ★
+                      </span>
+                    ))}
+                  </span>
+                </div>
+                <p class={styles.text}>{review.text}</p>
+              </article>
+            </li>
+          ))
+        }
+      </ul>
+
+      <button
+        class:list={[styles.arrow, styles.prev]}
+        data-reviews-prev
+        type="button"
+        aria-label="Предыдущие отзывы">←</button
+      >
+      <button
+        class:list={[styles.arrow, styles.next]}
+        data-reviews-next
+        type="button"
+        aria-label="Следующие отзывы">→</button
+      >
+    </div>
+  </div>
+
+  <script>
+    const grid = document.querySelector('[data-reviews-grid]') as HTMLElement;
+    const prev = document.querySelector(
+      '[data-reviews-prev]',
+    ) as HTMLButtonElement;
+    const next = document.querySelector(
+      '[data-reviews-next]',
+    ) as HTMLButtonElement;
+
+    const step = () => grid.clientWidth * 0.8;
+
+    prev.addEventListener('click', () =>
+      grid.scrollBy({ left: -step(), behavior: 'smooth' }),
+    );
+    next.addEventListener('click', () =>
+      grid.scrollBy({ left: step(), behavior: 'smooth' }),
+    );
+  </script>
+</section>

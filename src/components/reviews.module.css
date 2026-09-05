@@ -17,16 +17,26 @@
 }
 
 .subtitle {
-  margin: 0;
+  margin: 0 0 20px;
   color: var(--color-text-muted);
   font-size: 14px;
+}
+
+.cta {
+  padding: 14px 28px;
+  border: none;
+  border-radius: 999px;
+  background: var(--color-primary);
+  color: var(--color-white);
+  font-size: 15px;
+  font-weight: 600;
+  cursor: pointer;
 }
 
 .slider {
   position: relative;
 }
 
-/* горизонтальная лента со scroll-snap на всех брейкпоинтах */
 .grid {
   list-style: none;
   margin: 0;
@@ -45,76 +55,73 @@
 .item {
   flex: 0 0 auto;
   width: 85vw;
-  max-width: 320px;
+  max-width: 420px;
   scroll-snap-align: start;
   scroll-snap-stop: always;
 }
 
 .card {
-  display: block;
   height: 100%;
-  border-radius: 16px;
-  overflow: hidden;
+  padding: 20px;
   background: var(--color-white);
-  border: 1px solid var(--color-border);
-  text-decoration: none;
+  border-radius: 16px;
+  box-shadow: 0 8px 24px rgb(36 49 34 / 8%);
 }
 
-.image-wrap {
-  display: block;
-  overflow: hidden;
+.card-head {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 16px;
 }
 
-.image {
-  display: block;
-  width: 100%;
-  aspect-ratio: 3 / 2;
+.avatar {
+  flex: 0 0 auto;
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
   object-fit: cover;
-  transition: transform 0.3s ease;
 }
 
-.card:hover .image {
-  transform: scale(1.05);
-}
-
-.body {
-  display: block;
-  padding: 16px;
+.who {
+  min-width: 0;
 }
 
 .name {
-  display: block;
-  margin: 0 0 4px;
-  font-size: 17px;
+  margin: 0 0 2px;
+  font-size: 15px;
   font-weight: 700;
   color: var(--color-text);
 }
 
-.role {
-  display: block;
-  margin: 0 0 10px;
-  font-size: 11px;
-  font-weight: 600;
-  letter-spacing: 0.06em;
-  text-transform: uppercase;
+.tag {
+  margin: 0;
+  font-size: 13px;
   color: var(--color-text-muted);
 }
 
-.exp {
-  display: block;
-  margin: 0 0 8px;
-  font-size: 13px;
-  color: var(--color-text);
+.stars {
+  margin-left: auto;
+  display: flex;
+  gap: 2px;
 }
 
-.desc {
-  display: block;
-  font-size: 13px;
-  line-height: 1.5;
+.star {
+  color: #e3cdd5;
+  font-size: 16px;
+}
+
+.star-filled {
+  color: #e58ea6;
+}
+
+.text {
+  margin: 0;
+  font-size: 14px;
+  line-height: 1.55;
   color: var(--color-text-muted);
 }
 
-/* стрелки скрыты на мобильном — там свайп */
 .arrow {
   display: none;
 }
@@ -141,7 +148,7 @@
   }
 
   .item {
-    width: 380px;
+    width: 520px;
     max-width: none;
   }
 
