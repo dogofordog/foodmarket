@@ -2,6 +2,8 @@
 import styles from './footer.module.css';
 import { containerStyles } from '@/components/container';
 import { footerNav, contacts, legalLinks } from '@/data/footer';
+
+const currentYear = new Date().getFullYear();
 ---
 
 <footer class={styles.footer}>
@@ -14,48 +16,54 @@ import { footerNav, contacts, legalLinks } from '@/data/footer';
           Качественное сбалансированное питание ресторанного уровня, созданное
           под личным руководством профессионального шеф-повара.
         </p>
-        <div class={styles.socials}>
-          <a class={styles.social} href="#" aria-label="Telegram">
-            <svg
-              viewBox="0 0 24 24"
-              fill="none"
-              stroke="currentColor"
-              stroke-width="1.6"
-              stroke-linecap="round"
-              stroke-linejoin="round"
-              aria-hidden="true"
-            >
-              <path d="M22 2 11 13"></path>
-              <path d="M22 2 15 22l-4-9-9-4Z"></path>
-            </svg>
-          </a>
-          <a class={styles.social} href="#" aria-label="Instagram">
-            <svg
-              viewBox="0 0 24 24"
-              fill="none"
-              stroke="currentColor"
-              stroke-width="1.6"
-              stroke-linecap="round"
-              stroke-linejoin="round"
-              aria-hidden="true"
-            >
-              <rect x="2" y="2" width="20" height="20" rx="5"></rect>
-              <circle cx="12" cy="12" r="4"></circle>
-              <line x1="17.5" y1="6.5" x2="17.5" y2="6.5"></line>
-            </svg>
-          </a>
-          <a class={styles.social} href="#" aria-label="ВКонтакте">
-            <svg
-              viewBox="0 0 24 24"
-              fill="none"
-              stroke="currentColor"
-              stroke-width="1.6"
-              aria-hidden="true"
-            >
-              <circle cx="12" cy="12" r="9"></circle>
-            </svg>
-          </a>
-        </div>
+        <ul class={styles.socials}>
+          <li>
+            <a class={styles.social} href="#" aria-label="Telegram">
+              <svg
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="1.6"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                aria-hidden="true"
+              >
+                <path d="M22 2 11 13"></path>
+                <path d="M22 2 15 22l-4-9-9-4Z"></path>
+              </svg>
+            </a>
+          </li>
+          <li>
+            <a class={styles.social} href="#" aria-label="Instagram">
+              <svg
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="1.6"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                aria-hidden="true"
+              >
+                <rect x="2" y="2" width="20" height="20" rx="5"></rect>
+                <circle cx="12" cy="12" r="4"></circle>
+                <line x1="17.5" y1="6.5" x2="17.5" y2="6.5"></line>
+              </svg>
+            </a>
+          </li>
+          <li>
+            <a class={styles.social} href="#" aria-label="ВКонтакте">
+              <svg
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="1.6"
+                aria-hidden="true"
+              >
+                <circle cx="12" cy="12" r="9"></circle>
+              </svg>
+            </a>
+          </li>
+        </ul>
       </div>
 
       <div class={styles.navGrid}>
@@ -93,7 +101,9 @@ import { footerNav, contacts, legalLinks } from '@/data/footer';
     </div>
 
     <div class={styles.bottom}>
-      <p class={styles.copy}>© 2025 Катасонов Максим. Все права защищены.</p>
+      <p class={styles.copy}>
+        © {currentYear} Катасонов Максим. Все права защищены.
+      </p>
       <ul class={styles.legal}>
         {
           legalLinks.map((link) => (
