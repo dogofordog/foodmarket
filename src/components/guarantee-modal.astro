@@ -1,0 +1,124 @@
+---
+import styles from './guarantee-modal.module.css';
+
+const steps = [
+  {
+    title: 'Обратная связь за 3 часа',
+    text: 'Сообщите нам в течение 3 часов после доставки, что блюдо вам не подошло — этого достаточно для замены.',
+  },
+  {
+    title: 'Фотография для кухни',
+    text: 'По возможности пришлите фото блюда — это поможет шефу улучшить рецептуру и не допустить повторения.',
+  },
+  {
+    title: 'Первая замена — бесплатно',
+    text: 'Мы бесплатно приготовим и доставим новое блюдо в ближайшее время. Никаких доплат и скрытых условий.',
+  },
+  {
+    title: 'Действует на всё шеф-меню',
+    text: 'Гарантия распространяется на любые авторские позиции из шеф-меню.',
+  },
+];
+---
+
+<div class={styles.overlay} data-guarantee-overlay hidden>
+  <div
+    class={styles.dialog}
+    role="dialog"
+    aria-modal="true"
+    aria-labelledby="guarantee-title"
+  >
+    <button
+      class={styles.close}
+      type="button"
+      data-guarantee-close
+      aria-label="Закрыть окно"
+    >
+      <svg
+        viewBox="0 0 24 24"
+        fill="none"
+        stroke="currentColor"
+        stroke-width="1.8"
+        stroke-linecap="round"
+        aria-hidden="true"
+      >
+        <path d="M6 6l12 12M18 6L6 18"></path>
+      </svg>
+    </button>
+
+    <p class={styles.overline}>Катасонов • Меню шефа</p>
+    <h2 class={styles.title} id="guarantee-title">Гарантия вкуса</h2>
+
+    <blockquote class={styles.quote}>
+      <p class={styles.quoteText}>
+        «Мне важно, чтобы каждое блюдо приносило удовольствие. Поэтому я даю
+        простую гарантию: если что-то не понравилось — первая замена блюда
+        всегда бесплатно. Без вопросов, без споров. Просто скажите, и мы всё
+        исправим.»
+      </p>
+      <p class={styles.quoteAuthor}>— Максим Катасонов, шеф-повар</p>
+    </blockquote>
+
+    <ol class={styles.steps}>
+      {
+        steps.map((step, i) => (
+          <li class={styles.step}>
+            <span class={styles.stepNum} aria-hidden="true">
+              {i + 1}
+            </span>
+            <div class={styles.stepBody}>
+              <p class={styles.stepTitle}>{step.title}</p>
+              <p class={styles.stepText}>{step.text}</p>
+            </div>
+          </li>
+        ))
+      }
+    </ol>
+
+    <div class={styles.footer}>
+      <p class={styles.footerText}>
+        Ваш комфорт и доверие — наш главный приоритет.
+      </p>
+      <button class={styles.ok} type="button" data-guarantee-close
+        >Все понятно</button
+      >
+    </div>
+  </div>
+</div>
+
+<script>
+  const overlay = document.querySelector(
+    '[data-guarantee-overlay]',
+  ) as HTMLElement;
+  const dialog = overlay.querySelector('[role="dialog"]') as HTMLElement;
+
+  const open = () => {
+    overlay.hidden = false;
+    document.body.style.overflow = 'hidden';
+    (dialog.querySelector('[data-guarantee-close]') as HTMLElement)?.focus();
+  };
+
+  const close = () => {
+    overlay.hidden = true;
+    document.body.style.overflow = '';
+  };
+
+  document.addEventListener('click', (event) => {
+    const target = event.target as HTMLElement;
+    const opener = target.closest('[data-guarantee-open]');
+
+    if (opener) {
+      event.preventDefault();
+      open();
+      return;
+    }
+
+    if (target.closest('[data-guarantee-close]') || target === overlay) {
+      close();
+    }
+  });
+
+  document.addEventListener('keydown', (event) => {
+    if (event.key === 'Escape' && !overlay.hidden) close();
+  });
+</script>

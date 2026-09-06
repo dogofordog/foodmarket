@@ -74,7 +74,13 @@ const currentYear = new Date().getFullYear();
               <ul class={styles.colList}>
                 {col.links.map((link) => (
                   <li>
-                    <a class={styles.colLink} href={link.href}>
+                    <a
+                      class={styles.colLink}
+                      href={link.href}
+                      {...(link.action === 'guarantee'
+                        ? { 'data-guarantee-open': true }
+                        : {})}
+                    >
                       {link.title}
                     </a>
                   </li>
