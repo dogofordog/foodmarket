@@ -37,6 +37,7 @@
   scroll-snap-type: x mandatory;
   scrollbar-width: none;
 }
+
 .grid::-webkit-scrollbar {
   display: none;
 }
@@ -126,7 +127,7 @@
   right: -8px;
 }
 
-@media (min-width: 900px) {
+@media (width >= 900px) {
   .head {
     margin-bottom: 32px;
   }
