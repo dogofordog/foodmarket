@@ -1,23 +1,17 @@
 .strip {
-  display: flex;
-  justify-content: center;
-  gap: 0.5rem;
+  display: block;
   background: #f9e2d2;
   padding: 0.625rem 1rem;
   width: 100%;
   border: none;
   font: inherit;
   font-size: 0.9rem;
+  line-height: 1.4;
   color: var(--color-text);
-  text-align: left;
+  text-align: center;
   cursor: pointer;
 }
 
 .icon {
-  flex-shrink: 0;
-  line-height: 1.4;
-}
-
-.text {
-  line-height: 1.4;
+  margin-right: 0.25rem;
 }
