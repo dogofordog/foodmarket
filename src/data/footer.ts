@@ -1,6 +1,7 @@
 export interface FooterLink {
   title: string;
   href: string;
+  action?: string;
 }
 
 export interface FooterColumn {
@@ -14,7 +15,7 @@ export const footerNav: FooterColumn[] = [
     links: [
       { title: 'О нас', href: '#' },
       { title: 'Наши шефы', href: '#' },
-      { title: 'Гарантия вкуса', href: '#' },
+      { title: 'Гарантия вкуса', href: '#', action: 'guarantee' },
       { title: 'Отзывы', href: '#' },
       { title: 'Сотрудничество для шефов', href: '#' },
     ],
