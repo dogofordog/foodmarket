@@ -6,12 +6,15 @@ interface Props {
   text?: string;
 }
 
-const {
-  text = 'Гарантия вкуса — первая замена блюда всегда бесплатно',
-} = Astro.props;
+const { text = 'Гарантия вкуса — первая замена блюда всегда бесплатно!' } =
+  Astro.props;
 ---
 
-<div class:list={[containerStyles, styles.strip]}>
-  <span class={styles.icon}>⭐</span>
-  <p class={styles.text}>{text}</p>
-</div>
+<button
+  class:list={[containerStyles, styles.strip]}
+  type="button"
+  data-guarantee-open
+>
+  <span class={styles.icon} aria-hidden="true">⭐</span>
+  <span class={styles.text}>{text}</span>
+</button>

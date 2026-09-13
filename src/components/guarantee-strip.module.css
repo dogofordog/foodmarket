@@ -1,18 +1,17 @@
 .strip {
-  display: flex;
-  align-items: flex-start;
-  gap: 0.5rem;
-  background: #F9E2D2;
-  padding: 0.625rem 1rem; 
+  display: block;
+  background: #f9e2d2;
+  padding: 0.625rem 1rem;
+  width: 100%;
+  border: none;
+  font: inherit;
   font-size: 0.9rem;
+  line-height: 1.4;
   color: var(--color-text);
+  text-align: center;
+  cursor: pointer;
 }
 
 .icon {
-  flex-shrink: 0;
-  line-height: 1.4;
-}
-
-.text {
-  line-height: 1.4;
+  margin-right: 0.25rem;
 }
