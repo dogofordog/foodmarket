@@ -4,7 +4,7 @@ import { containerStyles } from './container';
 ---
 
 <header class={styles.header}>
- <div class:list={[containerStyles, styles.inner]}>
+  <div class:list={[containerStyles, styles.inner]}>
     <a href="/" class={styles.logo}>
       <img
         class={styles.logoIcon}
@@ -20,9 +20,16 @@ import { containerStyles } from './container';
     </a>
 
     <div class={styles.actions}>
-      <button class={styles.menuButton} type="button" data-menu-open>Меню</button>
+      <button class={styles.menuButton} type="button" data-menu-open
+        >Меню</button
+      >
 
-      <button class={styles.burger} aria-label="Открыть меню" type="button">
+      <button
+        class={styles.burger}
+        aria-label="Открыть меню"
+        type="button"
+        data-burger-open
+      >
         <span class:list={[styles.burgerLine, styles.burgerLineTop]}></span>
         <span class={styles.burgerLine}></span>
         <span class:list={[styles.burgerLine, styles.burgerLineBottom]}></span>

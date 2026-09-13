@@ -3,8 +3,13 @@ import styles from './burger-modal.module.css';
 import { contacts } from '@/data/footer';
 ---
 
-<dialog id="burger-modal" class={styles.modal}>
-  <div class={styles.inner}>
+<div class={styles.overlay} data-burger-overlay hidden>
+  <div
+    class={styles.dialog}
+    role="dialog"
+    aria-modal="true"
+    aria-label="Меню сайта"
+  >
     <button
       class={styles.close}
       type="button"
@@ -136,8 +141,7 @@ import { contacts } from '@/data/footer';
             loading="lazy"
           />
           <h2 class={styles.cardTitlePlain}>
-            <a class={styles.cardLink} href="/audience/office"
-              >Офисные сотрудники</a>
+            <a class={styles.cardLink} href="/audience/office">ДЛЯ ОФИСА</a>
           </h2>
           <p class={styles.cardText}>Обеды в офис по подписке, от 390 ₽/день</p>
         </section>
@@ -151,7 +155,7 @@ import { contacts } from '@/data/footer';
             loading="lazy"
           />
           <h2 class={styles.cardTitlePlain}>
-            <a class={styles.cardLink} href="/audience/family">Любимые блюда</a>
+            <a class={styles.cardLink} href="/audience/family">ЛЮБИМЫЕ БЛЮДА</a>
           </h2>
           <p class={styles.cardText}>
             Любимые блюда для всей семьи с доставкой
@@ -167,7 +171,7 @@ import { contacts } from '@/data/footer';
             loading="lazy"
           />
           <h2 class={styles.cardTitlePlain}>
-            <a class={styles.cardLink} href="/audience/business">Бизнес</a>
+            <a class={styles.cardLink} href="/audience/business">БИЗНЕС</a>
           </h2>
           <p class={styles.cardText}>
             Питание смены от 50 человек — от 320 ₽/порция
@@ -224,23 +228,39 @@ import { contacts } from '@/data/footer';
       </div>
     </div>
   </div>
+</div>
 
-  <script>
-    const dialog = document.getElementById('burger-modal') as HTMLDialogElement;
+<script>
+  const overlay = document.querySelector(
+    '[data-burger-overlay]',
+  ) as HTMLElement;
+  const dialog = overlay.querySelector('[role="dialog"]') as HTMLElement;
 
-    document.querySelectorAll('[data-burger-open]').forEach((el) => {
-      el.addEventListener('click', (event) => {
-        event.preventDefault();
-        dialog.showModal();
-      });
-    });
+  const open = () => {
+    overlay.hidden = false;
+    document.body.style.overflow = 'hidden';
+    (dialog.querySelector('[data-burger-close]') as HTMLElement)?.focus();
+  };
 
-    dialog
-      .querySelector('[data-burger-close]')
-      ?.addEventListener('click', () => dialog.close());
+  const close = () => {
+    overlay.hidden = true;
+    document.body.style.overflow = '';
+  };
 
-    dialog.addEventListener('click', (event) => {
-      if (event.target === dialog) dialog.close();
-    });
-  </script>
-</dialog>
+  document.addEventListener('click', (event) => {
+    const target = event.target as HTMLElement;
+
+    if (target.closest('[data-burger-open]')) {
+      open();
+      return;
+    }
+
+    if (target.closest('[data-burger-close]') || target === overlay) {
+      close();
+    }
+  });
+
+  document.addEventListener('keydown', (event) => {
+    if (event.key === 'Escape' && !overlay.hidden) close();
+  });
+</script>
