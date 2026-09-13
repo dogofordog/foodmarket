@@ -77,9 +77,9 @@ const currentYear = new Date().getFullYear();
                     <a
                       class={styles.colLink}
                       href={link.href}
-                      {...(link.action === 'guarantee'
-                        ? { 'data-guarantee-open': true }
-                        : {})}
+                      data-guarantee-open={
+                        link.action === 'guarantee' || undefined
+                      }
                     >
                       {link.title}
                     </a>
