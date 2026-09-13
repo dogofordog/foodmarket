@@ -1,48 +1,244 @@
 ---
-import styles from './chef-menu-modal.module.css';
-import { categories } from '../data/menu';
+import styles from './burger-modal.module.css';
+import { contacts } from '@/data/footer';
 ---
 
-<dialog id="chef-menu-modal" class={styles.modal}>
+<dialog id="burger-modal" class={styles.modal}>
   <div class={styles.inner}>
-    <button class={styles.close} type="button" data-menu-close aria-label="Закрыть меню">✕</button>
+    <button
+      class={styles.close}
+      type="button"
+      data-burger-close
+      aria-label="Закрыть меню"
+    >
+      <svg
+        viewBox="0 0 24 24"
+        fill="none"
+        stroke="currentColor"
+        stroke-width="1.8"
+        stroke-linecap="round"
+        aria-hidden="true"
+      >
+        <path d="M6 6l12 12M18 6L6 18"></path>
+      </svg>
+    </button>
 
-    <p class={styles.overline}>Катасонов • Меню шефа</p>
-    <h2 class={styles.title}>Шеф-меню</h2>
+    <header class={styles.head}>
+      <p class={styles.brandName}>Катасонов</p>
+      <p class={styles.brandTag}>Personal chef brand</p>
+    </header>
 
-    <ul class={styles.grid}>
-      {categories.map((category) => (
-        <li>
-          <a class={styles.card} href={`/menu/${category.slug}`}>
-            <img
-              class={styles.image}
-              src={category.img}
-              alt={category.title}
-              loading="lazy"
-              decoding="async"
-            />
-            <span class={styles.label}>{category.title}</span>
-          </a>
-        </li>
-      ))}
-    </ul>
+    <div class={styles.grid}>
+      <div class:list={[styles.row, styles.row1]}>
+        <section class:list={[styles.card, styles.tintBeige]}>
+          <img
+            class={styles.cardBg}
+            src="/images/burger/menu.svg"
+            alt=""
+            aria-hidden="true"
+            loading="lazy"
+          />
+          <h2 class={styles.cardTitle}>Шеф-меню</h2>
+          <div class={styles.pills}>
+            <a class={styles.pill} href="/menu/zavtraki">Завтраки</a>
+            <a class={styles.pill} href="/menu/salaty">Салаты</a>
+            <a class={styles.pill} href="/menu/supy">Супы</a>
+            <a class={styles.pill} href="/menu/goryachie-blyuda">Горячие</a>
+            <a class={styles.pill} href="/menu/deserty">Десерты</a>
+            <a class:list={[styles.pill, styles.pillAccent]} href="/menu"
+              >Все меню</a
+            >
+          </div>
+        </section>
+
+        <section class:list={[styles.card, styles.tintTeal]}>
+          <img
+            class={styles.cardBg}
+            src="/images/burger/promo.svg"
+            alt=""
+            aria-hidden="true"
+            loading="lazy"
+          />
+          <h2 class={styles.cardTitle}>Акции</h2>
+          <p class={styles.cardText}>
+            Скидка 5%, бесплатная доставка, подарки за отзыв
+          </p>
+        </section>
+
+        <section class:list={[styles.card, styles.tintPink]}>
+          <img
+            class={styles.cardBg}
+            src="/images/burger/delivery.svg"
+            alt=""
+            aria-hidden="true"
+            loading="lazy"
+          />
+          <h2 class={styles.cardTitle}>Доставка и оплата</h2>
+          <p class={styles.cardText}>СПб, от 45 мин, бесплатно от 3 000 ₽</p>
+        </section>
+      </div>
+
+      <div class:list={[styles.row, styles.row2]}>
+        <section class:list={[styles.card, styles.tintMint]}>
+          <img
+            class={styles.cardBg}
+            src="/images/burger/subscription.svg"
+            alt=""
+            aria-hidden="true"
+            loading="lazy"
+          />
+          <h2 class={styles.cardTitle}>
+            <a class={styles.cardLink} href="/subscription"
+              >Подписка на питание</a>
+          </h2>
+          <p class={styles.cardText}>
+            От 930 ₽/день, персональный план от шефа
+          </p>
+        </section>
+
+        <section class:list={[styles.card, styles.tintBeige]}>
+          <img
+            class={styles.cardBg}
+            src="/images/burger/blog.svg"
+            alt=""
+            aria-hidden="true"
+            loading="lazy"
+          />
+          <h2 class={styles.cardTitle}>Блог шефа</h2>
+          <p class={styles.cardText}>Рецепты, истории и секреты кухни</p>
+        </section>
+
+        <section class:list={[styles.card, styles.tintTeal]}>
+          <img
+            class={styles.cardBg}
+            src="/images/burger/reviews.svg"
+            alt=""
+            aria-hidden="true"
+            loading="lazy"
+          />
+          <h2 class={styles.cardTitle}>Отзывы</h2>
+          <div class={styles.pills}>
+            <a class={styles.pill} href="/#reviews">Все отзывы</a>
+            <a class:list={[styles.pill, styles.pillSolid]} href="/#reviews"
+              >Оставить отзыв</a
+            >
+          </div>
+        </section>
+      </div>
+
+      <div class:list={[styles.row, styles.row3]}>
+        <section class:list={[styles.card, styles.tintPink]}>
+          <img
+            class={styles.cardBg}
+            src="/images/burger/office.svg"
+            alt=""
+            aria-hidden="true"
+            loading="lazy"
+          />
+          <h2 class={styles.cardTitlePlain}>
+            <a class={styles.cardLink} href="/audience/office"
+              >Офисные сотрудники</a>
+          </h2>
+          <p class={styles.cardText}>Обеды в офис по подписке, от 390 ₽/день</p>
+        </section>
+
+        <section class:list={[styles.card, styles.tintMint]}>
+          <img
+            class={styles.cardBg}
+            src="/images/burger/family.svg"
+            alt=""
+            aria-hidden="true"
+            loading="lazy"
+          />
+          <h2 class={styles.cardTitlePlain}>
+            <a class={styles.cardLink} href="/audience/family">Любимые блюда</a>
+          </h2>
+          <p class={styles.cardText}>
+            Любимые блюда для всей семьи с доставкой
+          </p>
+        </section>
+
+        <section class:list={[styles.card, styles.tintBeige]}>
+          <img
+            class={styles.cardBg}
+            src="/images/burger/business.svg"
+            alt=""
+            aria-hidden="true"
+            loading="lazy"
+          />
+          <h2 class={styles.cardTitlePlain}>
+            <a class={styles.cardLink} href="/audience/business">Бизнес</a>
+          </h2>
+          <p class={styles.cardText}>
+            Питание смены от 50 человек — от 320 ₽/порция
+          </p>
+        </section>
+      </div>
+
+      <div class:list={[styles.row, styles.row4]}>
+        <section class:list={[styles.card, styles.tintTeal]}>
+          <img
+            class={styles.cardBg}
+            src="/images/burger/home.svg"
+            alt=""
+            aria-hidden="true"
+            loading="lazy"
+          />
+          <h2 class={styles.cardTitle}>
+            <a class={styles.cardLink} href="/audience/private-chef"
+              >Шеф на дом</a>
+          </h2>
+          <p class={styles.cardText}>Ужин с шефом у вас дома — от 8 900 ₽</p>
+        </section>
+
+        <section class:list={[styles.card, styles.tintPink]}>
+          <img
+            class={styles.cardBg}
+            src="/images/burger/contacts.svg"
+            alt=""
+            aria-hidden="true"
+            loading="lazy"
+          />
+          <h2 class={styles.cardTitle}>Контакты</h2>
+          <a class={styles.phone} href={contacts.phoneHref}>{contacts.phone}</a>
+          <div class={styles.pills}>
+            <a class={styles.pill} href="#">MAX</a>
+            <a class={styles.pill} href="#">Telegram</a>
+          </div>
+        </section>
+
+        <section class:list={[styles.card, styles.tintBlue, styles.cabinet]}>
+          <img
+            class={styles.cardBg}
+            src="/images/burger/cabinet.svg"
+            alt=""
+            aria-hidden="true"
+            loading="lazy"
+          />
+          <h2 class={styles.cardTitle}>Кабинет</h2>
+          <p class={styles.cardText}>
+            Войдите, чтобы отслеживать заказы и бонусы
+          </p>
+          <button class={styles.login} type="button">Войти</button>
+        </section>
+      </div>
+    </div>
   </div>
 
   <script>
-    const dialog = document.getElementById('chef-menu-modal') as HTMLDialogElement;
+    const dialog = document.getElementById('burger-modal') as HTMLDialogElement;
 
-    // все кнопки/ссылки с data-menu-open открывают модалку
-    document.querySelectorAll('[data-menu-open]').forEach((el) => {
+    document.querySelectorAll('[data-burger-open]').forEach((el) => {
       el.addEventListener('click', (event) => {
-        event.preventDefault(); // не переходим по href — открываем модалку
+        event.preventDefault();
         dialog.showModal();
       });
     });
 
-    // крестик закрывает
-    dialog.querySelector('[data-menu-close]')?.addEventListener('click', () => dialog.close());
+    dialog
+      .querySelector('[data-burger-close]')
+      ?.addEventListener('click', () => dialog.close());
 
-    // клик по тёмному фону (backdrop) закрывает
     dialog.addEventListener('click', (event) => {
       if (event.target === dialog) dialog.close();
     });
